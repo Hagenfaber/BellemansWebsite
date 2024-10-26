@@ -23,9 +23,9 @@ export const ContactSection =  () => {
                     </div>
                     <div className="flex flex-col space-y-4">
                         <form className="space-y-4">
-                            <Input placeholder="Naam"/>
-                            <Input placeholder="Email" type="email"/>
-                            <Input placeholder="Onderwerp"/>
+                            <Input placeholder="Naam" className={"bg-white"}/>
+                            <Input placeholder="Email" type="email" className={"bg-white"} />
+                            <Input placeholder="Onderwerp" className={"bg-white"}/>
                             <textarea
                                 className="min-h-[100px] w-full rounded-md border border-gray-200 bg-white px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-950 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-800 dark:bg-gray-950 dark:placeholder:text-gray-500 dark:focus:ring-gray-300"
                                 placeholder="Bericht"
