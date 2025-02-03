@@ -4,7 +4,7 @@ namespace Domain.Page;
 
 public class PageSection
 {
-    public int PageId { get; set; }
+    public string PageId { get; set; }
     public Page Page { get; set; }
 
     public int SectionId { get; set; }
