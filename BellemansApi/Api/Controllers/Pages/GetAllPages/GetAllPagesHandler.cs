@@ -17,7 +17,7 @@ public class GetAllPagesHandler : ApiRequestHandler<GetAllPagesQuery, GetAllPage
     public override async Task<GetAllPagesResponse> Handle(GetAllPagesQuery request, CancellationToken
         cancellationToken)
     {
-        var pages = await _pageRepository.GetAll();
+        var pages = await _pageRepository.GetAllIncludingSections();
 
         return new GetAllPagesResponse
         {

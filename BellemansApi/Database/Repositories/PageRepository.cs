@@ -1,5 +1,6 @@
 ﻿using Domain.Page;
 using Domain.Page.repository;
+using Microsoft.EntityFrameworkCore;
 using Shared.Database;
 
 namespace Database.Repositories;
@@ -12,4 +13,12 @@ public class PageRepository
     {
     }
 
+    public Task<List<Page>> GetAllIncludingSections()
+    {
+        return Set
+            .Include(p => p.PageSections)
+            .Include(p => p.HeaderSections)
+            .Include(p=> p.ImageSections)
+            .ToListAsync();
+    }
 }

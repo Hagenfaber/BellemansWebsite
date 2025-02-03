@@ -11,11 +11,6 @@ namespace Database;
 public class BellemansDbContext : DbContext
 {
   public const string DefaultSchema = "Bellemans";
-  
-  public DbSet<Page> Pages { get; set; }
-  public DbSet<BaseSection> Sections { get; set; }
-  public DbSet<HeaderSection> HeaderSections { get; set; }
-  public DbSet<PageSection> PageSections { get; set; }
 
   public BellemansDbContext(DbContextOptions options) : base(options)
   { }
@@ -32,19 +27,31 @@ public class BellemansDbContext : DbContext
     modelBuilder.ApplyConfigurationsFromAssembly(typeof(BellemansDbContext).Assembly);
     
     modelBuilder.Entity<HeaderSection>().ToTable("HeaderSections");
+    modelBuilder.Entity<ImageSection>().ToTable("ImageSections");
+    modelBuilder.Entity<Page>().ToTable("Pages");
     
-    // Configure PageSection as a join table
-    modelBuilder.Entity<PageSection>()
-      .HasKey(ps => new { ps.PageId, ps.SectionId }); // Composite key
+    modelBuilder.Entity<ImageSection>()
+      .HasKey(p => p.Id);
     
-    modelBuilder.Entity<PageSection>()
-      .HasOne(ps => ps.Page)
-      .WithMany(p => p.PageSections)
-      .HasForeignKey(ps => ps.PageId);
+    modelBuilder.Entity<HeaderSection>()
+      .HasKey(p => p.Id);
 
-    modelBuilder.Entity<PageSection>()
-      .HasOne(ps => ps.Section)
-      .WithMany()
-      .HasForeignKey(ps => ps.SectionId);
+    modelBuilder.Entity<Page>()
+      .HasMany(p => p.ImageSections)
+      .WithMany();
+    
+    modelBuilder.Entity<Page>()
+      .HasMany(p => p.HeaderSections)
+      .WithMany();
+
+    modelBuilder.Entity<Page>()
+      .OwnsMany(p => p.PageSections, psb =>
+      {
+        psb.ToTable("PageSections");
+        psb
+          .WithOwner()
+          .HasForeignKey("PageId");
+        psb.HasKey("PageId", "Id");
+      });
   }
 }

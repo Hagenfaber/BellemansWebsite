@@ -1,14 +1,15 @@
 using Domain.Section;
+using Shared.Domain;
 
 namespace Domain.Page;
 
-public class PageSection
+public class PageSection : Entity<Guid>
 {
-    public string PageId { get; set; }
-    public Page Page { get; set; }
-
-    public int SectionId { get; set; }
-    public BaseSection Section { get; set; }
-
     public int Order { get; set; } // Defines sequence
+
+    public PageSection(int order, Guid id)
+    {
+        Id = id;
+        Order = order;
+    }
 }
