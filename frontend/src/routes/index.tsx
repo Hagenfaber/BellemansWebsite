@@ -13,7 +13,7 @@ export const Route = createFileRoute('/')({
 function HomeComponent() {
   return (
       <div className="flex flex-col justify-center items-center">
-          <HeaderSection />
+          <HeaderSection title={"TEST"} description={"SDASD"} />
           <CTASection />
           <AboutMeSection />
           <ContactSection />

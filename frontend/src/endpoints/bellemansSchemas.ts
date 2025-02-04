@@ -3,123 +3,49 @@
  *
  * @version 1.0.0
  */
-export type Error = {
-  data?: Record<string, any> | Record<string, any>[] | null;
-  error: {
-    status?: number;
-    name?: string;
-    message?: string;
-    details?: Record<string, any>;
-  };
+export type GetAllPagesResponse = {
+  pages: PageResponse[];
 };
 
-export type UploadFile = {
-  id?: number;
-  name?: string;
-  alternativeText?: string;
-  caption?: string;
-  /**
-   * @format integer
-   */
-  width?: number;
-  /**
-   * @format integer
-   */
-  height?: number;
-  formats?: number;
-  hash?: string;
-  ext?: string;
-  mime?: string;
-  /**
-   * @format double
-   */
-  size?: number;
-  url?: string;
-  previewUrl?: string;
-  provider?: string;
-  provider_metadata?: Record<string, any>;
-  /**
-   * @format date-time
-   */
-  createdAt?: string;
-  /**
-   * @format date-time
-   */
-  updatedAt?: string;
-};
-
-export type UsersPermissionsRole = {
-  id?: number;
-  name?: string;
+export type MappedHeaderSection = {
+  title?: string;
   description?: string;
-  type?: string;
   /**
-   * @format date-time
+   * @format uuid
    */
-  createdAt?: string;
+  id?: string;
   /**
-   * @format date-time
+   * @format int32
    */
-  updatedAt?: string;
+  order?: number;
 };
 
-export type UsersPermissionsUser = {
+export type MappedImageSection = {
+  imageUrl?: string;
   /**
-   * @example 1
+   * @format uuid
    */
-  id?: number;
+  id?: string;
   /**
-   * @example foo.bar
+   * @format int32
    */
-  username?: string;
-  /**
-   * @example foo.bar@strapi.io
-   */
-  email?: string;
-  /**
-   * @example local
-   */
-  provider?: string;
-  /**
-   * @example true
-   */
-  confirmed?: boolean;
-  /**
-   * @example false
-   */
-  blocked?: boolean;
-  /**
-   * @format date-time
-   * @example 2022-06-02T08:32:06.258Z
-   */
-  createdAt?: string;
-  /**
-   * @format date-time
-   * @example 2022-06-02T08:32:06.267Z
-   */
-  updatedAt?: string;
+  order?: number;
 };
 
-export type UsersPermissionsUserRegistration = {
-  /**
-   * @example eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
-   */
-  jwt?: string;
-  user?: UsersPermissionsUser;
+export type PageResponse = {
+  name: string;
+  title: string;
+  headerSections: MappedHeaderSection[];
+  imageSections: MappedImageSection[];
 };
 
-export type UsersPermissionsPermissionsTree = {
-  [key: string]: {
-    /**
-     * every controller of the api
-     */
-    controllers?: {
-      [key: string]: {
-        [key: string]: {
-          enabled?: boolean;
-          policy?: string;
-        };
-      };
-    };
-  };
+export type ProblemDetails = {
+  type?: string | null;
+  title?: string | null;
+  /**
+   * @format int32
+   */
+  status?: number | null;
+  detail?: string | null;
+  instance?: string | null;
 };

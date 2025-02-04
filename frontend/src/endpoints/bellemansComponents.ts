@@ -7,9 +7,60 @@ import * as reactQuery from "@tanstack/react-query";
 import { useBellemansContext, BellemansContext } from "./bellemansContext";
 import type * as Fetcher from "./bellemansFetcher";
 import { bellemansFetch } from "./bellemansFetcher";
+import type * as Schemas from "./bellemansSchemas";
+
+export type PagesGetAllError = Fetcher.ErrorWrapper<{
+  status: 400;
+  payload: Schemas.ProblemDetails;
+}>;
+
+export type PagesGetAllVariables = BellemansContext["fetcherOptions"];
+
+export const fetchPagesGetAll = (
+  variables: PagesGetAllVariables,
+  signal?: AbortSignal,
+) =>
+  bellemansFetch<
+    Schemas.GetAllPagesResponse,
+    PagesGetAllError,
+    undefined,
+    {},
+    {},
+    {}
+  >({ url: "/pages", method: "get", ...variables, signal });
+
+export const usePagesGetAll = <TData = Schemas.GetAllPagesResponse,>(
+  variables: PagesGetAllVariables,
+  options?: Omit<
+    reactQuery.UseQueryOptions<
+      Schemas.GetAllPagesResponse,
+      PagesGetAllError,
+      TData
+    >,
+    "queryKey" | "queryFn" | "initialData"
+  >,
+) => {
+  const { fetcherOptions, queryOptions, queryKeyFn } =
+    useBellemansContext(options);
+  return reactQuery.useQuery<
+    Schemas.GetAllPagesResponse,
+    PagesGetAllError,
+    TData
+  >({
+    queryKey: queryKeyFn({
+      path: "/pages",
+      operationId: "pagesGetAll",
+      variables,
+    }),
+    queryFn: ({ signal }) =>
+      fetchPagesGetAll({ ...fetcherOptions, ...variables }, signal),
+    ...options,
+    ...queryOptions,
+  });
+};
 
 export type QueryOperation = {
-  path: string;
-  operationId: never;
-  variables: unknown;
+  path: "/pages";
+  operationId: "pagesGetAll";
+  variables: PagesGetAllVariables;
 };
