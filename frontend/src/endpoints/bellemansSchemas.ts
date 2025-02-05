@@ -7,17 +7,28 @@ export type GetAllPagesResponse = {
   pages: PageResponse[];
 };
 
+export type GetPageByIdResponse = {
+  page: PageResponse;
+};
+
+export type MappedCallToAction = {
+  url?: string;
+  text?: string;
+};
+
 export type MappedHeaderSection = {
-  title?: string;
-  description?: string;
   /**
    * @format uuid
    */
   id?: string;
+  title?: string;
+  description?: string;
   /**
    * @format int32
    */
   order?: number;
+  primaryCallToAction?: MappedCallToAction;
+  secondaryCallToAction?: MappedCallToAction;
 };
 
 export type MappedImageSection = {

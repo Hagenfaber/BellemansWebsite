@@ -3,6 +3,7 @@ using System;
 using Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Database.Migrations
 {
     [DbContext(typeof(BellemansDbContext))]
-    partial class BellemansDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250204200900_AddCallToActionsToHeaderSection")]
+    partial class AddCallToActionsToHeaderSection
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -71,21 +74,6 @@ namespace Database.Migrations
                     b.ToTable("ImageSections", "Bellemans");
                 });
 
-            modelBuilder.Entity("Domain.Section.ServicesSection.ServicesSection", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ServicesSections", "Bellemans");
-                });
-
             modelBuilder.Entity("HeaderSectionPage", b =>
                 {
                     b.Property<Guid>("HeaderSectionsId")
@@ -114,21 +102,6 @@ namespace Database.Migrations
                     b.HasIndex("PageId");
 
                     b.ToTable("ImageSectionPage", "Bellemans");
-                });
-
-            modelBuilder.Entity("PageServicesSection", b =>
-                {
-                    b.Property<string>("PageId")
-                        .HasColumnType("text");
-
-                    b.Property<Guid>("ServicesSectionsId")
-                        .HasColumnType("uuid");
-
-                    b.HasKey("PageId", "ServicesSectionsId");
-
-                    b.HasIndex("ServicesSectionsId");
-
-                    b.ToTable("PageServicesSection", "Bellemans");
                 });
 
             modelBuilder.Entity("Domain.Page.Page", b =>
@@ -207,105 +180,6 @@ namespace Database.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Domain.Section.ServicesSection.ServicesSection", b =>
-                {
-                    b.OwnsOne("Domain.Section.ServicesSection.CallToActionSubSection", "FirstCallToActionSubSection", b1 =>
-                        {
-                            b1.Property<Guid>("ServicesSectionId")
-                                .HasColumnType("uuid");
-
-                            b1.Property<string>("Description")
-                                .IsRequired()
-                                .HasColumnType("text");
-
-                            b1.Property<string>("Title")
-                                .IsRequired()
-                                .HasColumnType("text");
-
-                            b1.HasKey("ServicesSectionId");
-
-                            b1.ToTable("ServicesSections", "Bellemans");
-
-                            b1.WithOwner()
-                                .HasForeignKey("ServicesSectionId");
-
-                            b1.OwnsOne("Domain.Components.Link", "CallToAction", b2 =>
-                                {
-                                    b2.Property<Guid>("CallToActionSubSectionServicesSectionId")
-                                        .HasColumnType("uuid");
-
-                                    b2.Property<string>("Text")
-                                        .IsRequired()
-                                        .HasColumnType("text");
-
-                                    b2.Property<string>("Url")
-                                        .IsRequired()
-                                        .HasColumnType("text");
-
-                                    b2.HasKey("CallToActionSubSectionServicesSectionId");
-
-                                    b2.ToTable("ServicesSections", "Bellemans");
-
-                                    b2.WithOwner()
-                                        .HasForeignKey("CallToActionSubSectionServicesSectionId");
-                                });
-
-                            b1.Navigation("CallToAction")
-                                .IsRequired();
-                        });
-
-                    b.OwnsOne("Domain.Section.ServicesSection.CallToActionSubSection", "SecondCallToActionSubSection", b1 =>
-                        {
-                            b1.Property<Guid>("ServicesSectionId")
-                                .HasColumnType("uuid");
-
-                            b1.Property<string>("Description")
-                                .IsRequired()
-                                .HasColumnType("text");
-
-                            b1.Property<string>("Title")
-                                .IsRequired()
-                                .HasColumnType("text");
-
-                            b1.HasKey("ServicesSectionId");
-
-                            b1.ToTable("ServicesSections", "Bellemans");
-
-                            b1.WithOwner()
-                                .HasForeignKey("ServicesSectionId");
-
-                            b1.OwnsOne("Domain.Components.Link", "CallToAction", b2 =>
-                                {
-                                    b2.Property<Guid>("CallToActionSubSectionServicesSectionId")
-                                        .HasColumnType("uuid");
-
-                                    b2.Property<string>("Text")
-                                        .IsRequired()
-                                        .HasColumnType("text");
-
-                                    b2.Property<string>("Url")
-                                        .IsRequired()
-                                        .HasColumnType("text");
-
-                                    b2.HasKey("CallToActionSubSectionServicesSectionId");
-
-                                    b2.ToTable("ServicesSections", "Bellemans");
-
-                                    b2.WithOwner()
-                                        .HasForeignKey("CallToActionSubSectionServicesSectionId");
-                                });
-
-                            b1.Navigation("CallToAction")
-                                .IsRequired();
-                        });
-
-                    b.Navigation("FirstCallToActionSubSection")
-                        .IsRequired();
-
-                    b.Navigation("SecondCallToActionSubSection")
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("HeaderSectionPage", b =>
                 {
                     b.HasOne("Domain.Section.HeaderSection", null)
@@ -332,21 +206,6 @@ namespace Database.Migrations
                     b.HasOne("Domain.Page.Page", null)
                         .WithMany()
                         .HasForeignKey("PageId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("PageServicesSection", b =>
-                {
-                    b.HasOne("Domain.Page.Page", null)
-                        .WithMany()
-                        .HasForeignKey("PageId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Domain.Section.ServicesSection.ServicesSection", null)
-                        .WithMany()
-                        .HasForeignKey("ServicesSectionsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

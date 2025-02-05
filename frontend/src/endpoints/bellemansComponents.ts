@@ -59,8 +59,70 @@ export const usePagesGetAll = <TData = Schemas.GetAllPagesResponse,>(
   });
 };
 
-export type QueryOperation = {
-  path: "/pages";
-  operationId: "pagesGetAll";
-  variables: PagesGetAllVariables;
+export type PagesGetByIdPathParams = {
+  id: string;
 };
+
+export type PagesGetByIdError = Fetcher.ErrorWrapper<{
+  status: 400;
+  payload: Schemas.ProblemDetails;
+}>;
+
+export type PagesGetByIdVariables = {
+  pathParams: PagesGetByIdPathParams;
+} & BellemansContext["fetcherOptions"];
+
+export const fetchPagesGetById = (
+  variables: PagesGetByIdVariables,
+  signal?: AbortSignal,
+) =>
+  bellemansFetch<
+    Schemas.GetPageByIdResponse,
+    PagesGetByIdError,
+    undefined,
+    {},
+    {},
+    PagesGetByIdPathParams
+  >({ url: "/pages/{id}", method: "get", ...variables, signal });
+
+export const usePagesGetById = <TData = Schemas.GetPageByIdResponse,>(
+  variables: PagesGetByIdVariables,
+  options?: Omit<
+    reactQuery.UseQueryOptions<
+      Schemas.GetPageByIdResponse,
+      PagesGetByIdError,
+      TData
+    >,
+    "queryKey" | "queryFn" | "initialData"
+  >,
+) => {
+  const { fetcherOptions, queryOptions, queryKeyFn } =
+    useBellemansContext(options);
+  return reactQuery.useQuery<
+    Schemas.GetPageByIdResponse,
+    PagesGetByIdError,
+    TData
+  >({
+    queryKey: queryKeyFn({
+      path: "/pages/{id}",
+      operationId: "pagesGetById",
+      variables,
+    }),
+    queryFn: ({ signal }) =>
+      fetchPagesGetById({ ...fetcherOptions, ...variables }, signal),
+    ...options,
+    ...queryOptions,
+  });
+};
+
+export type QueryOperation =
+  | {
+      path: "/pages";
+      operationId: "pagesGetAll";
+      variables: PagesGetAllVariables;
+    }
+  | {
+      path: "/pages/{id}";
+      operationId: "pagesGetById";
+      variables: PagesGetByIdVariables;
+    };

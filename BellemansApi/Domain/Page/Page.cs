@@ -1,4 +1,5 @@
 using Domain.Section;
+using Domain.Section.ServicesSection;
 using Shared.Domain;
 using Shared.Domain.Validation;
 
@@ -9,6 +10,7 @@ public sealed class Page : Entity<string>
     public string Title { get; private set; }
     public ICollection<HeaderSection> HeaderSections { get; set; }
     public ICollection<ImageSection> ImageSections { get; set; }
+    public ICollection<ServicesSection> ServicesSections { get; set; }
     public ICollection<PageSection> PageSections { get; set; }
 
     private Page(){}

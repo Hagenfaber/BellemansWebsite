@@ -3,6 +3,7 @@ using System;
 using Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Database.Migrations
 {
     [DbContext(typeof(BellemansDbContext))]
-    partial class BellemansDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250205173153_AddServicesSection")]
+    partial class AddServicesSection
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -114,21 +117,6 @@ namespace Database.Migrations
                     b.HasIndex("PageId");
 
                     b.ToTable("ImageSectionPage", "Bellemans");
-                });
-
-            modelBuilder.Entity("PageServicesSection", b =>
-                {
-                    b.Property<string>("PageId")
-                        .HasColumnType("text");
-
-                    b.Property<Guid>("ServicesSectionsId")
-                        .HasColumnType("uuid");
-
-                    b.HasKey("PageId", "ServicesSectionsId");
-
-                    b.HasIndex("ServicesSectionsId");
-
-                    b.ToTable("PageServicesSection", "Bellemans");
                 });
 
             modelBuilder.Entity("Domain.Page.Page", b =>
@@ -332,21 +320,6 @@ namespace Database.Migrations
                     b.HasOne("Domain.Page.Page", null)
                         .WithMany()
                         .HasForeignKey("PageId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("PageServicesSection", b =>
-                {
-                    b.HasOne("Domain.Page.Page", null)
-                        .WithMany()
-                        .HasForeignKey("PageId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Domain.Section.ServicesSection.ServicesSection", null)
-                        .WithMany()
-                        .HasForeignKey("ServicesSectionsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

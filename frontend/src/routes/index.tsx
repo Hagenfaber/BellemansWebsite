@@ -1,23 +1,42 @@
 import * as React from 'react'
-import { createFileRoute } from '@tanstack/react-router'
+import {createFileRoute} from '@tanstack/react-router'
 import {HeaderSection} from "@/components/layout/sections/contentSections/HeaderSection";
 import {CTASection} from "@/components/layout/sections/contentSections/CTASection";
 import {AboutMeSection} from "@/components/layout/sections/contentSections/AboutMeSection";
 import {ContactSection} from "@/components/layout/sections/contentSections/ContactSection";
+import {useEffect} from "react";
+import {usePagesGetById} from "@/endpoints/bellemansComponents";
 
 
 export const Route = createFileRoute('/')({
-  component: HomeComponent,
+    component: HomeComponent,
 })
 
 function HomeComponent() {
-  return (
-      <div className="flex flex-col justify-center items-center">
-          <HeaderSection title={"TEST"} description={"SDASD"} />
-          <CTASection />
-          <AboutMeSection />
-          <ContactSection />
-      </div>
-  )
+    const {data, isFetching} = usePagesGetById({
+        pathParams: {
+            id: "home"
+        }
+    });
+
+    if (isFetching) {
+        return <>Laden...........</>
+    }
+
+    let allSections = [
+        ...data?.page.headerSections,
+        ...data?.page.imageSections
+    ]
+
+    const sortedSections = allSections.sort((a, b) => a.order - b.order);
+
+    return (
+        <div className="flex flex-col justify-center items-center">
+            {sortedSections.map(section => <HeaderSection section={section} />)}
+            <CTASection/>
+            <AboutMeSection/>
+            <ContactSection/>
+        </div>
+    )
 }
 

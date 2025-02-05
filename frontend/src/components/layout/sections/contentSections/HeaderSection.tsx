@@ -4,37 +4,40 @@ import {Section} from "@/components/layout/sections/Section";
 import {MappedHeaderSection} from "@/endpoints/bellemansSchemas";
 import {LinkType,Link} from "@/components/Link";
 
+type Props = {
+    section?: MappedHeaderSection;
+}
 
-export const HeaderSection = (headerSection: MappedHeaderSection) => {
+export const HeaderSection = ({section}: Props) => {
     return (
-        <Section>
+        (section && <Section>
             <div className="container px-4 md:px-6">
                 <div className="flex flex-col items-center space-y-4 text-center">
                     <div className="space-y-2">
                         <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
-                            {headerSection.title}
+                            {section.title}
                         </h1>
                         <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400">
-                            {headerSection.description}
+                            {section.description}
                         </p>
                     </div>
                     <div className="space-x-4">
-                        
+
                         <Link
                             variant={LinkType.Primary}
-                            href={"#"}
+                            href={section.primaryCallToAction?.url ?? ""}
                         >
-                            Maak een afspraak
+                            {section.primaryCallToAction?.text}
                         </Link>
                         <Link
                             variant={LinkType.Secondary}
-                            href={"#"}
+                            href={section.secondaryCallToAction?.url ?? ""}
                         >
-                            Leer meer
+                            {section.secondaryCallToAction?.text}
                         </Link>
                     </div>
                 </div>
             </div>
-        </Section>
+        </Section>)
     );
 }

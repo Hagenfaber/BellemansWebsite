@@ -1,5 +1,6 @@
 ﻿using Domain.Page;
 using Domain.Section;
+using Domain.Section.ServicesSection;
 using Microsoft.EntityFrameworkCore;
 
 namespace Database;
@@ -28,6 +29,7 @@ public class BellemansDbContext : DbContext
     
     modelBuilder.Entity<HeaderSection>().ToTable("HeaderSections");
     modelBuilder.Entity<ImageSection>().ToTable("ImageSections");
+    modelBuilder.Entity<ServicesSection>().ToTable("ServicesSections");
     modelBuilder.Entity<Page>().ToTable("Pages");
     
     modelBuilder.Entity<ImageSection>()
@@ -35,6 +37,35 @@ public class BellemansDbContext : DbContext
     
     modelBuilder.Entity<HeaderSection>()
       .HasKey(p => p.Id);
+    
+    modelBuilder.Entity<ServicesSection>()
+      .HasKey(p => p.Id);
+
+    modelBuilder.Entity<HeaderSection>()
+      .OwnsOne(h => h.PrimaryCallToAction, cb =>
+      {
+        cb.WithOwner();
+      });
+
+    modelBuilder.Entity<HeaderSection>()
+      .OwnsOne(h => h.SecondaryCallToAction, cb =>
+      {
+        cb.WithOwner();
+      });
+    
+    modelBuilder.Entity<ServicesSection>()
+      .OwnsOne(h => h.FirstCallToActionSubSection, cb =>
+      {
+        cb.OwnsOne(ctass => ctass.CallToAction);
+        cb.WithOwner();
+      });
+    
+    modelBuilder.Entity<ServicesSection>()
+      .OwnsOne(h => h.SecondCallToActionSubSection, cb =>
+      {
+        cb.OwnsOne(ctass => ctass.CallToAction);
+        cb.WithOwner();
+      });
 
     modelBuilder.Entity<Page>()
       .HasMany(p => p.ImageSections)
@@ -42,6 +73,10 @@ public class BellemansDbContext : DbContext
     
     modelBuilder.Entity<Page>()
       .HasMany(p => p.HeaderSections)
+      .WithMany();
+    
+    modelBuilder.Entity<Page>()
+      .HasMany(p => p.ServicesSections)
       .WithMany();
 
     modelBuilder.Entity<Page>()

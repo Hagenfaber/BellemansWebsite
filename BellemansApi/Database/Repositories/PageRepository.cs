@@ -19,6 +19,18 @@ public class PageRepository
             .Include(p => p.PageSections)
             .Include(p => p.HeaderSections)
             .Include(p=> p.ImageSections)
+            .Include(p => p.ServicesSections)
             .ToListAsync();
+    }
+    
+    public Task<Page?> GetById(string id)
+    {
+        return Set
+            .Include(p => p.PageSections)
+            .Include(p => p.HeaderSections)
+            .Include(p=> p.ImageSections)
+            .Include(p => p.ServicesSections)
+            .Where(p => p.Id == id)
+            .FirstOrDefaultAsync();
     }
 }

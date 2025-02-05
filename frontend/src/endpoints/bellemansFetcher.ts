@@ -1,6 +1,6 @@
 import { BellemansContext } from "./bellemansContext";
 
-const baseUrl = "http://localhost:1337/api";
+const baseUrl = "http://localhost:5000";
 
 export type ErrorWrapper<TError> =
   | TError

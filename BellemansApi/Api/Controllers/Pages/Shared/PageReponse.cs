@@ -1,5 +1,6 @@
 ﻿using Domain.Page;
 using Domain.Section;
+using Domain.Section.ServicesSection;
 
 namespace Api.Controllers.Pages.Shared;
 
@@ -9,6 +10,7 @@ public struct PageResponse
     public required string Title { get; set; }
     public required ICollection<MappedHeaderSection> HeaderSections { get; set; }
     public required ICollection<MappedImageSection> ImageSections { get; set; }
+    public required ICollection<MappedServicesSection> ServicesSections { get; set; }
     
     public static PageResponse Map(Page page)
     {
@@ -20,6 +22,7 @@ public struct PageResponse
             Title = mappedPage.Title,
             HeaderSections = mappedPage.HeaderSections,
             ImageSections = mappedPage.ImageSections,
+            ServicesSections = mappedPage.ServicesSections
         };
     }
 
@@ -33,6 +36,7 @@ public struct PageResponse
             PageSections = pageSections,
             HeaderSections = page.HeaderSections.Select(hs => MapHeaderSection(hs, pageSections)).ToList(),
             ImageSections = page.ImageSections.Select(imageSection => MapImageSection(imageSection, pageSections)).ToList(),
+            ServicesSections = page.ServicesSections.Select(servicesSection => MapServicesSection(servicesSection, pageSections)).ToList()
         };
     }
 
@@ -53,6 +57,8 @@ public struct PageResponse
             Order = pageSections.FirstOrDefault(ps => ps.Id == headerSection.Id)!.Order,
             Title = headerSection.Title,
             Description = headerSection.Description,
+            PrimaryCallToAction = new MappedCallToAction { Text = headerSection.PrimaryCallToAction.Text, Url = headerSection.PrimaryCallToAction.Url },
+            SecondaryCallToAction = new MappedCallToAction { Text = headerSection.SecondaryCallToAction.Text, Url = headerSection.SecondaryCallToAction.Url },
         };
     }
     
@@ -63,6 +69,36 @@ public struct PageResponse
             Id = imageSection.Id,
             Order = pageSections.FirstOrDefault(ps => ps.Id == imageSection.Id)!.Order,
             ImageUrl = imageSection.ImageUrl,
+        };
+    }
+    
+    public static MappedServicesSection MapServicesSection(ServicesSection servicesSection, List<MappedPageSection> pageSections)
+    {
+        return new MappedServicesSection
+        {
+            Id = servicesSection.Id,
+            Order = pageSections.FirstOrDefault(ps => ps.Id == servicesSection.Id)!.Order,
+            Title = servicesSection.Title,
+            FirstCallToActionSubSection = new MappedCallToActionSubSection
+            {
+                Title = servicesSection.FirstCallToActionSubSection.Title,
+                Description = servicesSection.FirstCallToActionSubSection.Description,
+                CallToAction = new MappedCallToAction
+                {
+                    Text = servicesSection.FirstCallToActionSubSection.CallToAction.Text,
+                    Url = servicesSection.FirstCallToActionSubSection.CallToAction.Url
+                }
+            },
+            SecondCallToActionSubSection = new MappedCallToActionSubSection
+            {
+                Title = servicesSection.SecondCallToActionSubSection.Title,
+                Description = servicesSection.SecondCallToActionSubSection.Description,
+                CallToAction = new MappedCallToAction
+                {
+                    Text = servicesSection.SecondCallToActionSubSection.CallToAction.Text,
+                    Url = servicesSection.SecondCallToActionSubSection.CallToAction.Url
+                }
+            },
         };
     }
 
