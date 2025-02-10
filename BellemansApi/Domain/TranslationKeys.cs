@@ -6,6 +6,7 @@ public class TranslationKeys
   public const string FromCannotBeGreaterThanUntilHour = "FromCannotBeGreaterThanUntilHour";
   public const string FromCannotBeGreaterThanUntilDay = "FromCannotBeGreaterThanUntilDay";
   public const string FromCannotBeGreaterThanUntilDateTime = "FromCannotBeGreaterThanUntilDateTime";
+  public const string ImageUrlCannotBeEmpty = "ImageUrlCannotBeEmpty";
   public const string LengthCannotBeMoreThan = "LengthCannotBeMoreThan";
   public const string LengthCannotBeLessThan = "LengthCannotBeLessThan";
   public const string NameAlreadyExists = "NameAlreadyExists";

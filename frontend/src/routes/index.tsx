@@ -6,6 +6,7 @@ import {AboutMeSection} from "@/components/layout/sections/contentSections/About
 import {ContactSection} from "@/components/layout/sections/contentSections/ContactSection";
 import {useEffect} from "react";
 import {usePagesGetById} from "@/endpoints/bellemansComponents";
+import { useErrorToast } from "@/hooks/useErrorToast";
 
 
 export const Route = createFileRoute('/')({
@@ -13,11 +14,15 @@ export const Route = createFileRoute('/')({
 })
 
 function HomeComponent() {
-    const {data, isFetching} = usePagesGetById({
+    const {data, isFetching, error} = usePagesGetById({
         pathParams: {
             id: "home"
         }
     });
+
+    if (error) {
+        useErrorToast(error);
+    }
 
     if (isFetching) {
         return <>Laden...........</>

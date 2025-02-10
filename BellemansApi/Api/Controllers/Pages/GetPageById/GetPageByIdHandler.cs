@@ -1,6 +1,7 @@
 ﻿
 using Api.Controllers.Pages.GetPageById;
 using Api.Controllers.Pages.Shared;
+using Domain;
 using Domain.Page.repository;
 using Shared.Api;
 
@@ -18,8 +19,10 @@ public class GetPageByIdHandler : ApiRequestHandler<GetPageByIdQuery, GetPageByI
     public override async Task<GetPageByIdResponse> Handle(GetPageByIdQuery request, CancellationToken
         cancellationToken)
     {
-        var page = await _pageRepository.GetById(request.Id);
-
+        var page = await _pageRepository.Get(request.Id);
+        if (page is null)
+            throw new ProblemDetailsException(TranslationKeys.PageNotFound);
+        
         return new GetPageByIdResponse
         {
             Page = PageResponse.Map(page)

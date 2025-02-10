@@ -5,30 +5,35 @@ using Shared.Domain.Validation;
 
 namespace Domain.Page;
 
-public sealed class Page : Entity<string>
+public sealed class Page : Entity<Guid>
 {
+    public string Name { get; private set; }
     public string Title { get; private set; }
-    public ICollection<HeaderSection> HeaderSections { get; set; }
-    public ICollection<ImageSection> ImageSections { get; set; }
-    public ICollection<ServicesSection> ServicesSections { get; set; }
-    public ICollection<PageSection> PageSections { get; set; }
+    public ICollection<HeaderSection> HeaderSections { get; private set; }
+    public ICollection<ImageSection> ImageSections { get; private set; }
+    public ICollection<ServicesSection> ServicesSections { get; private set; }
+    public ICollection<PageSection> PageSections { get; private set; }
 
+    #pragma warning disable CS8618, CS9264
     private Page(){}
+    #pragma warning restore CS8618, CS9264
 
-    private Page(string id, string title, ICollection<HeaderSection> headerSections, ICollection<ImageSection> imageSections, ICollection<PageSection> pageSections)
+    private Page(string name, string title, ICollection<HeaderSection> headerSections, ICollection<ImageSection> imageSections, ICollection<ServicesSection> servicesSections, ICollection<PageSection> pageSections)
     {
-        Id = id;
+        Id = Guid.CreateVersion7();
+        Name = name;
         Title = title;
         HeaderSections = headerSections;
         ImageSections = imageSections;
+        ServicesSections = servicesSections;
         PageSections = pageSections;
     }
 
-    public static Result<Page> Create(string name, string title, ICollection<HeaderSection> headerSections, ICollection<ImageSection> imageSections, ICollection<PageSection> pageSections)
+    public static Result<Page> Create(string name, string title, ICollection<HeaderSection> headerSections, ICollection<ImageSection> imageSections,  ICollection<ServicesSection> servicesSections, ICollection<PageSection> pageSections)
     {
         if (string.IsNullOrWhiteSpace(name))
             return Result.Error(TranslationKeys.NameCannotBeEmpty);
 
-        return new Page(name, title, headerSections, imageSections, pageSections);
+        return new Page(name, title, headerSections, imageSections, servicesSections, pageSections);
     }
 }

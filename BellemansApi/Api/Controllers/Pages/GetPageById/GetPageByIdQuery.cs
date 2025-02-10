@@ -5,5 +5,5 @@ namespace Api.Controllers.Pages.GetPageById;
 
 public class GetPageByIdQuery : IApiRequest<GetPageByIdResponse>, IApiRequestWithCustomTransactions
 {
-    public string Id { get; set; }
+    public Guid Id { get; set; }
 }

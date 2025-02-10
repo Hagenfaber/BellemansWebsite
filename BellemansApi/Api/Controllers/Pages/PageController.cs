@@ -32,7 +32,7 @@ public class PageController : ControllerBase
         return Results.Ok(result);
     }
     
-    [HttpGet("{Id}")]
+    [HttpGet("{Id:guid}")]
     [EndpointName("PagesGetById")]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(GetPageByIdResponse))]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
