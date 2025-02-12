@@ -6,9 +6,8 @@ import { defineConfig } from "@openapi-codegen/cli";
 export default defineConfig({
     bellemans: {
         from: {
-            relativePath:
-                "../strapi/src/extensions/documentation/documentation/1.0.0/full_documentation.json",
-            source: "file",
+            source: "url",
+            url: "http://localhost:5000/openapi/v1.json"
         },
         outputDir: "src/endpoints",
         to: async (context: any) => {

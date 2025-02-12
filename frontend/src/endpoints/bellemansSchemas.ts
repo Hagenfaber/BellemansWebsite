@@ -3,123 +3,124 @@
  *
  * @version 1.0.0
  */
-export type Error = {
-  data?: Record<string, any> | Record<string, any>[] | null;
-  error: {
-    status?: number;
-    name?: string;
-    message?: string;
-    details?: Record<string, any>;
-  };
+export type CallToActionResponse = {
+  url: string;
+  text: string;
 };
 
-export type UploadFile = {
-  id?: number;
-  name?: string;
-  alternativeText?: string;
-  caption?: string;
-  /**
-   * @format integer
-   */
-  width?: number;
-  /**
-   * @format integer
-   */
-  height?: number;
-  formats?: number;
-  hash?: string;
-  ext?: string;
-  mime?: string;
-  /**
-   * @format double
-   */
-  size?: number;
-  url?: string;
-  previewUrl?: string;
-  provider?: string;
-  provider_metadata?: Record<string, any>;
-  /**
-   * @format date-time
-   */
-  createdAt?: string;
-  /**
-   * @format date-time
-   */
-  updatedAt?: string;
+export type CallToActionSubSectionResponse = {
+  title: string;
+  description: string;
+  callToActionResponse: CallToActionResponse;
 };
 
-export type UsersPermissionsRole = {
-  id?: number;
-  name?: string;
-  description?: string;
-  type?: string;
-  /**
-   * @format date-time
-   */
-  createdAt?: string;
-  /**
-   * @format date-time
-   */
-  updatedAt?: string;
+export type GetAllPagesResponse = {
+  pages: PageResponse[];
 };
 
-export type UsersPermissionsUser = {
-  /**
-   * @example 1
-   */
-  id?: number;
-  /**
-   * @example foo.bar
-   */
-  username?: string;
-  /**
-   * @example foo.bar@strapi.io
-   */
-  email?: string;
-  /**
-   * @example local
-   */
-  provider?: string;
-  /**
-   * @example true
-   */
-  confirmed?: boolean;
-  /**
-   * @example false
-   */
-  blocked?: boolean;
-  /**
-   * @format date-time
-   * @example 2022-06-02T08:32:06.258Z
-   */
-  createdAt?: string;
-  /**
-   * @format date-time
-   * @example 2022-06-02T08:32:06.267Z
-   */
-  updatedAt?: string;
+export type GetPageByNameResponse = {
+  page: PageResponse2;
 };
 
-export type UsersPermissionsUserRegistration = {
+export type HeaderSectionResponse = {
   /**
-   * @example eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+   * @format uuid
    */
-  jwt?: string;
-  user?: UsersPermissionsUser;
+  id: string;
+  title: string;
+  description: string;
+  /**
+   * @format int32
+   */
+  order: number;
+  primaryCallToActionResponse: CallToActionResponse;
+  secondaryCallToActionResponse: CallToActionResponse;
 };
 
-export type UsersPermissionsPermissionsTree = {
-  [key: string]: {
-    /**
-     * every controller of the api
-     */
-    controllers?: {
-      [key: string]: {
-        [key: string]: {
-          enabled?: boolean;
-          policy?: string;
-        };
-      };
-    };
-  };
+export type ImageSectionResponse = {
+  /**
+   * @format uuid
+   */
+  id: string;
+  imageUrl: string;
+  /**
+   * @format int32
+   */
+  order: number;
+};
+
+export type PageResponse = {
+  /**
+   * @format uuid
+   */
+  id: string;
+  name: string;
+  title: string;
+  pageSections: PageSectionResponse[];
+  headerSections: HeaderSectionResponse[];
+  imageSections: ImageSectionResponse[];
+  servicesSections: ServicesSectionResponse[];
+};
+
+export type PageResponse2 = {
+  /**
+   * @format uuid
+   */
+  id: string;
+  name: string;
+  title: string;
+  pageSections: PageSectionResponse[];
+  headerSections: HeaderSectionResponse[];
+  imageSections: ImageSectionResponse[];
+  servicesSections: ServicesSectionResponse2[];
+};
+
+export type PageSectionResponse = {
+  /**
+   * @format uuid
+   */
+  id: string;
+  /**
+   * @format int32
+   */
+  order: number;
+};
+
+export type ProblemDetails = {
+  type?: string | null;
+  title?: string | null;
+  /**
+   * @format int32
+   */
+  status?: number | null;
+  detail?: string | null;
+  instance?: string | null;
+};
+
+export type ServicesSectionResponse = {
+  /**
+   * @format uuid
+   */
+  id: string;
+  /**
+   * @format int32
+   */
+  order: number;
+  title: string;
+  firstCallToActionSubSectionResponse: CallToActionSubSectionResponse;
+  secondCallToActionSubSectionResponse: CallToActionSubSectionResponse;
+};
+
+export type ServicesSectionResponse2 = {
+  /**
+   * @format uuid
+   */
+  id: string;
+  /**
+   * @format int32
+   */
+  order: number;
+  title: string;
+  firstCallToActionSubSectionResponse: CallToActionSubSectionResponse;
+  secondCallToActionSubSectionResponse: CallToActionSubSectionResponse;
 };
