@@ -1,8 +1,8 @@
 ﻿using Api.Controllers.Pages.Shared;
 
-namespace Api.Controllers.Pages.GetPageById;
+namespace Api.Controllers.Pages.GetPageByName;
 
-public struct GetPageByIdResponse
+public struct GetPageByNameResponse
 {
     public required PageResponse Page { get; set; }
 }

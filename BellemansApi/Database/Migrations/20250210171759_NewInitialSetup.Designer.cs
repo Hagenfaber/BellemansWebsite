@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Database.Migrations
 {
     [DbContext(typeof(BellemansDbContext))]
-    [Migration("20250205173337_AddMissingManyToManyServicesSection")]
-    partial class AddMissingManyToManyServicesSection
+    [Migration("20250210171759_NewInitialSetup")]
+    partial class NewInitialSetup
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -28,7 +28,11 @@ namespace Database.Migrations
 
             modelBuilder.Entity("Domain.Page.Page", b =>
                 {
-                    b.Property<string>("Id")
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Title")
@@ -37,13 +41,12 @@ namespace Database.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Pages", "Bellemans");
+                    b.ToTable("Page", "Bellemans");
                 });
 
             modelBuilder.Entity("Domain.Section.HeaderSection", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
                     b.Property<string>("Description")
@@ -56,13 +59,12 @@ namespace Database.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("HeaderSections", "Bellemans");
+                    b.ToTable("HeaderSection", "Bellemans");
                 });
 
             modelBuilder.Entity("Domain.Section.ImageSection", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
                     b.Property<string>("ImageUrl")
@@ -71,13 +73,12 @@ namespace Database.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ImageSections", "Bellemans");
+                    b.ToTable("ImageSection", "Bellemans");
                 });
 
             modelBuilder.Entity("Domain.Section.ServicesSection.ServicesSection", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
                     b.Property<string>("Title")
@@ -86,7 +87,7 @@ namespace Database.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ServicesSections", "Bellemans");
+                    b.ToTable("ServicesSection", "Bellemans");
                 });
 
             modelBuilder.Entity("HeaderSectionPage", b =>
@@ -94,8 +95,8 @@ namespace Database.Migrations
                     b.Property<Guid>("HeaderSectionsId")
                         .HasColumnType("uuid");
 
-                    b.Property<string>("PageId")
-                        .HasColumnType("text");
+                    b.Property<Guid>("PageId")
+                        .HasColumnType("uuid");
 
                     b.HasKey("HeaderSectionsId", "PageId");
 
@@ -109,8 +110,8 @@ namespace Database.Migrations
                     b.Property<Guid>("ImageSectionsId")
                         .HasColumnType("uuid");
 
-                    b.Property<string>("PageId")
-                        .HasColumnType("text");
+                    b.Property<Guid>("PageId")
+                        .HasColumnType("uuid");
 
                     b.HasKey("ImageSectionsId", "PageId");
 
@@ -121,8 +122,8 @@ namespace Database.Migrations
 
             modelBuilder.Entity("PageServicesSection", b =>
                 {
-                    b.Property<string>("PageId")
-                        .HasColumnType("text");
+                    b.Property<Guid>("PageId")
+                        .HasColumnType("uuid");
 
                     b.Property<Guid>("ServicesSectionsId")
                         .HasColumnType("uuid");
@@ -138,11 +139,10 @@ namespace Database.Migrations
                 {
                     b.OwnsMany("Domain.Page.PageSection", "PageSections", b1 =>
                         {
-                            b1.Property<string>("PageId")
-                                .HasColumnType("text");
+                            b1.Property<Guid>("PageId")
+                                .HasColumnType("uuid");
 
                             b1.Property<Guid>("Id")
-                                .ValueGeneratedOnAdd()
                                 .HasColumnType("uuid");
 
                             b1.Property<int>("Order")
@@ -150,7 +150,7 @@ namespace Database.Migrations
 
                             b1.HasKey("PageId", "Id");
 
-                            b1.ToTable("PageSections", "Bellemans");
+                            b1.ToTable("PageSection", "Bellemans");
 
                             b1.WithOwner()
                                 .HasForeignKey("PageId");
@@ -176,7 +176,7 @@ namespace Database.Migrations
 
                             b1.HasKey("HeaderSectionId");
 
-                            b1.ToTable("HeaderSections", "Bellemans");
+                            b1.ToTable("HeaderSection", "Bellemans");
 
                             b1.WithOwner()
                                 .HasForeignKey("HeaderSectionId");
@@ -197,7 +197,7 @@ namespace Database.Migrations
 
                             b1.HasKey("HeaderSectionId");
 
-                            b1.ToTable("HeaderSections", "Bellemans");
+                            b1.ToTable("HeaderSection", "Bellemans");
 
                             b1.WithOwner()
                                 .HasForeignKey("HeaderSectionId");
@@ -227,7 +227,7 @@ namespace Database.Migrations
 
                             b1.HasKey("ServicesSectionId");
 
-                            b1.ToTable("ServicesSections", "Bellemans");
+                            b1.ToTable("ServicesSection", "Bellemans");
 
                             b1.WithOwner()
                                 .HasForeignKey("ServicesSectionId");
@@ -247,7 +247,7 @@ namespace Database.Migrations
 
                                     b2.HasKey("CallToActionSubSectionServicesSectionId");
 
-                                    b2.ToTable("ServicesSections", "Bellemans");
+                                    b2.ToTable("ServicesSection", "Bellemans");
 
                                     b2.WithOwner()
                                         .HasForeignKey("CallToActionSubSectionServicesSectionId");
@@ -272,7 +272,7 @@ namespace Database.Migrations
 
                             b1.HasKey("ServicesSectionId");
 
-                            b1.ToTable("ServicesSections", "Bellemans");
+                            b1.ToTable("ServicesSection", "Bellemans");
 
                             b1.WithOwner()
                                 .HasForeignKey("ServicesSectionId");
@@ -292,7 +292,7 @@ namespace Database.Migrations
 
                                     b2.HasKey("CallToActionSubSectionServicesSectionId");
 
-                                    b2.ToTable("ServicesSections", "Bellemans");
+                                    b2.ToTable("ServicesSection", "Bellemans");
 
                                     b2.WithOwner()
                                         .HasForeignKey("CallToActionSubSectionServicesSectionId");

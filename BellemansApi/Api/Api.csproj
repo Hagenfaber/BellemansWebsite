@@ -16,8 +16,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.1" />
-      <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.1">
+      <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.2" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.2">
         <PrivateAssets>all</PrivateAssets>
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
@@ -34,8 +34,14 @@
       <Reference Include="MediatR.Contracts">
         <HintPath>..\..\..\..\.nuget\packages\mediatr.contracts\2.0.1\lib\netstandard2.0\MediatR.Contracts.dll</HintPath>
       </Reference>
+      <Reference Include="Microsoft.AspNetCore.OpenApi">
+        <HintPath>..\..\..\..\.nuget\packages\microsoft.aspnetcore.openapi\9.0.1\lib\net9.0\Microsoft.AspNetCore.OpenApi.dll</HintPath>
+      </Reference>
       <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions">
         <HintPath>..\..\..\..\.nuget\packages\microsoft.extensions.dependencyinjection.abstractions\9.0.1\lib\net9.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+      </Reference>
+      <Reference Include="Microsoft.OpenApi">
+        <HintPath>..\..\..\..\.nuget\packages\microsoft.openapi\1.6.23\lib\netstandard2.0\Microsoft.OpenApi.dll</HintPath>
       </Reference>
     </ItemGroup>
 

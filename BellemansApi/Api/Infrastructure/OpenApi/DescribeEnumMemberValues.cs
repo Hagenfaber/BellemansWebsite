@@ -12,6 +12,7 @@ public class DescribeEnumMemberValues : IOpenApiSchemaTransformer
   {
     if (context.JsonTypeInfo.Type.IsEnum)
     {
+      // schema.Type = JsonSchemaType.String;
       schema.Type = "string";
       schema.Format = null;
 
@@ -33,6 +34,7 @@ public class DescribeEnumMemberValues : IOpenApiSchemaTransformer
 
         var enumValueString = enumMemberAttribute?.Value ?? enumValue.ToString();
         schema.Enum.Add(new OpenApiString(enumValueString));
+        // schema.Enum.Add(enumValueString);
       }
     }
 

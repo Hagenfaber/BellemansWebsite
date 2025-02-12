@@ -1,3 +1,4 @@
+using Api.Controllers.Pages.Shared;
 using Api.Infrastructure.Cors;
 using Api.Infrastructure.ExceptionHandlers;
 using Api.Infrastructure.JsonConverters;
@@ -5,7 +6,10 @@ using Api.Infrastructure.MediatR;
 using Api.Infrastructure.OpenApi;
 using Database;
 using Domain;
+using Microsoft.AspNetCore.OpenApi;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi;
+using Microsoft.OpenApi.Models;
 using Shared.Database;
 
 namespace Api;
@@ -54,7 +58,25 @@ public class Startup(IConfiguration configuration)
 
     services.AddExceptionHandler<ProblemExceptionHandler>();
     services.AddLocalization();
-    services.AddOpenApi(options => { options.AddSchemaTransformer<DescribeEnumMemberValues>(); });
+    services.AddOpenApi(options =>
+    {
+      // options.AddSchemaTransformer<DescribeEnumMemberValues>();
+      
+      // options.AddSchemaTransformer((schema, context, cancellationToken) =>
+      // {
+      //   if (schema.Properties is not null)
+      //   {
+      //     foreach (var property in schema.Properties)
+      //     {
+      //       if (schema.Required?.Contains(property.Key) != true)
+      //       {
+      //         property.Value.Nullable = false;
+      //       }
+      //     }
+      //   }
+      //   return Task.CompletedTask;
+      // });
+    });
   }
 
   /// <summary>
@@ -73,9 +95,9 @@ public class Startup(IConfiguration configuration)
     app.UseAuthorization();
 
     app.MapControllers();
-    
-    app.MapOpenApi()
-      .CacheOutput();
+
+    app.MapOpenApi();
+      // .CacheOutput();
 
     using (var scope = app.Services.CreateScope())
     {

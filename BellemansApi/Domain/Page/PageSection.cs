@@ -1,15 +1,21 @@
 using Domain.Section;
 using Shared.Domain;
+using Shared.Domain.Validation;
 
 namespace Domain.Page;
 
-public class PageSection : Entity<Guid>
+public sealed class PageSection : Entity<Guid>
 {
-    public int Order { get; set; } // Defines sequence
+    public int Order { get; private set; } // Defines sequence
 
-    public PageSection(int order, Guid id)
+    private PageSection(int order)
     {
-        Id = id;
+        Id = Guid.CreateVersion7();
         Order = order;
+    }
+
+    public static Result<PageSection> Create(int order)
+    {
+        return new PageSection(order);
     }
 }

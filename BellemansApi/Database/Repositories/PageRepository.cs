@@ -6,7 +6,7 @@ using Shared.Database;
 namespace Database.Repositories;
 
 public class PageRepository
-    : EntityFrameworkRepository<Page, string, BellemansDbContext>, IPageRepository
+    : EntityFrameworkRepository<Page, Guid, BellemansDbContext>, IPageRepository
 {
     public PageRepository(ICustomDbContextFactory<BellemansDbContext> dbContextFactory)
         : base(dbContextFactory)
@@ -22,8 +22,19 @@ public class PageRepository
             .Include(p => p.ServicesSections)
             .ToListAsync();
     }
-    
-    public Task<Page?> GetById(string id)
+
+    public Task<Page?> GetByName(string name)
+    {
+        return Set
+            .Include(p => p.PageSections)
+            .Include(p => p.HeaderSections)
+            .Include(p=> p.ImageSections)
+            .Include(p => p.ServicesSections)
+            .Where(p => p.Name == name)
+            .FirstOrDefaultAsync();
+    }
+
+    public new Task<Page?> Get(Guid id)
     {
         return Set
             .Include(p => p.PageSections)

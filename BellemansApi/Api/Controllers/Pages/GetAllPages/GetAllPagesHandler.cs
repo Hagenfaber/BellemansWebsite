@@ -21,7 +21,7 @@ public class GetAllPagesHandler : ApiRequestHandler<GetAllPagesQuery, GetAllPage
 
         return new GetAllPagesResponse
         {
-            Pages = pages.Select(PageResponse.Map).ToList()
+            Pages = pages.Select(PageResponse.Map)
         };
     }
 }
