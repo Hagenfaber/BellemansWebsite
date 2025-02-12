@@ -22,7 +22,18 @@ public class PageRepository
             .Include(p => p.ServicesSections)
             .ToListAsync();
     }
-    
+
+    public Task<Page?> GetByName(string name)
+    {
+        return Set
+            .Include(p => p.PageSections)
+            .Include(p => p.HeaderSections)
+            .Include(p=> p.ImageSections)
+            .Include(p => p.ServicesSections)
+            .Where(p => p.Name == name)
+            .FirstOrDefaultAsync();
+    }
+
     public new Task<Page?> Get(Guid id)
     {
         return Set

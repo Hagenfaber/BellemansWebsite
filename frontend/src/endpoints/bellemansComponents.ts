@@ -60,7 +60,7 @@ export const usePagesGetAll = <TData = Schemas.GetAllPagesResponse,>(
 };
 
 export type PagesGetByIdPathParams = {
-  id: string;
+  name: string;
 };
 
 export type PagesGetByIdError = Fetcher.ErrorWrapper<{
@@ -77,19 +77,19 @@ export const fetchPagesGetById = (
   signal?: AbortSignal,
 ) =>
   bellemansFetch<
-    Schemas.GetPageByIdResponse,
+    Schemas.GetPageByNameResponse,
     PagesGetByIdError,
     undefined,
     {},
     {},
     PagesGetByIdPathParams
-  >({ url: "/pages/{id}", method: "get", ...variables, signal });
+  >({ url: "/pages/{name}", method: "get", ...variables, signal });
 
-export const usePagesGetById = <TData = Schemas.GetPageByIdResponse,>(
+export const usePagesGetById = <TData = Schemas.GetPageByNameResponse,>(
   variables: PagesGetByIdVariables,
   options?: Omit<
     reactQuery.UseQueryOptions<
-      Schemas.GetPageByIdResponse,
+      Schemas.GetPageByNameResponse,
       PagesGetByIdError,
       TData
     >,
@@ -99,12 +99,12 @@ export const usePagesGetById = <TData = Schemas.GetPageByIdResponse,>(
   const { fetcherOptions, queryOptions, queryKeyFn } =
     useBellemansContext(options);
   return reactQuery.useQuery<
-    Schemas.GetPageByIdResponse,
+    Schemas.GetPageByNameResponse,
     PagesGetByIdError,
     TData
   >({
     queryKey: queryKeyFn({
-      path: "/pages/{id}",
+      path: "/pages/{name}",
       operationId: "pagesGetById",
       variables,
     }),
@@ -122,7 +122,7 @@ export type QueryOperation =
       variables: PagesGetAllVariables;
     }
   | {
-      path: "/pages/{id}";
+      path: "/pages/{name}";
       operationId: "pagesGetById";
       variables: PagesGetByIdVariables;
     };

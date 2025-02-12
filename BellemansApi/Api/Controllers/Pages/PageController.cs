@@ -1,6 +1,6 @@
 ﻿using System.Net.Mime;
 using Api.Controllers.Pages.GetAllPages;
-using Api.Controllers.Pages.GetPageById;
+using Api.Controllers.Pages.GetPageByName;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -32,13 +32,16 @@ public class PageController : ControllerBase
         return Results.Ok(result);
     }
     
-    [HttpGet("{Id:guid}")]
+    [HttpGet("{name}")]
     [EndpointName("PagesGetById")]
-    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(GetPageByIdResponse))]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(GetPageByNameResponse))]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<IResult> GetById([FromRoute] GetPageByIdQuery query)
+    public async Task<IResult> GetById([FromRoute] string name)
     {
-        var result = await _mediator.Send(query);
+        var result = await _mediator.Send(new GetPageByNameQuery()
+        {
+            Name = name
+        });
         return Results.Ok(result);
     }
 

@@ -3,51 +3,87 @@
  *
  * @version 1.0.0
  */
+export type CallToActionResponse = {
+  url: string;
+  text: string;
+};
+
+export type CallToActionSubSectionResponse = {
+  title: string;
+  description: string;
+  callToActionResponse: CallToActionResponse;
+};
+
 export type GetAllPagesResponse = {
   pages: PageResponse[];
 };
 
-export type GetPageByIdResponse = {
-  page: PageResponse;
+export type GetPageByNameResponse = {
+  page: PageResponse2;
 };
 
-export type MappedCallToAction = {
-  url?: string;
-  text?: string;
-};
-
-export type MappedHeaderSection = {
+export type HeaderSectionResponse = {
   /**
    * @format uuid
    */
-  id?: string;
-  title?: string;
-  description?: string;
+  id: string;
+  title: string;
+  description: string;
   /**
    * @format int32
    */
-  order?: number;
-  primaryCallToAction?: MappedCallToAction;
-  secondaryCallToAction?: MappedCallToAction;
+  order: number;
+  primaryCallToActionResponse: CallToActionResponse;
+  secondaryCallToActionResponse: CallToActionResponse;
 };
 
-export type MappedImageSection = {
-  imageUrl?: string;
+export type ImageSectionResponse = {
   /**
    * @format uuid
    */
-  id?: string;
+  id: string;
+  imageUrl: string;
   /**
    * @format int32
    */
-  order?: number;
+  order: number;
 };
 
 export type PageResponse = {
+  /**
+   * @format uuid
+   */
+  id: string;
   name: string;
   title: string;
-  headerSections: MappedHeaderSection[];
-  imageSections: MappedImageSection[];
+  pageSections: PageSectionResponse[];
+  headerSections: HeaderSectionResponse[];
+  imageSections: ImageSectionResponse[];
+  servicesSections: ServicesSectionResponse[];
+};
+
+export type PageResponse2 = {
+  /**
+   * @format uuid
+   */
+  id: string;
+  name: string;
+  title: string;
+  pageSections: PageSectionResponse[];
+  headerSections: HeaderSectionResponse[];
+  imageSections: ImageSectionResponse[];
+  servicesSections: ServicesSectionResponse2[];
+};
+
+export type PageSectionResponse = {
+  /**
+   * @format uuid
+   */
+  id: string;
+  /**
+   * @format int32
+   */
+  order: number;
 };
 
 export type ProblemDetails = {
@@ -59,4 +95,32 @@ export type ProblemDetails = {
   status?: number | null;
   detail?: string | null;
   instance?: string | null;
+};
+
+export type ServicesSectionResponse = {
+  /**
+   * @format uuid
+   */
+  id: string;
+  /**
+   * @format int32
+   */
+  order: number;
+  title: string;
+  firstCallToActionSubSectionResponse: CallToActionSubSectionResponse;
+  secondCallToActionSubSectionResponse: CallToActionSubSectionResponse;
+};
+
+export type ServicesSectionResponse2 = {
+  /**
+   * @format uuid
+   */
+  id: string;
+  /**
+   * @format int32
+   */
+  order: number;
+  title: string;
+  firstCallToActionSubSectionResponse: CallToActionSubSectionResponse;
+  secondCallToActionSubSectionResponse: CallToActionSubSectionResponse;
 };

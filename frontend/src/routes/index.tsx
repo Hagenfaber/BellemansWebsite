@@ -16,7 +16,7 @@ export const Route = createFileRoute('/')({
 function HomeComponent() {
     const {data, isFetching, error} = usePagesGetById({
         pathParams: {
-            id: "home"
+            name: "home"
         }
     });
 
@@ -29,8 +29,8 @@ function HomeComponent() {
     }
 
     let allSections = [
-        ...data?.page.headerSections,
-        ...data?.page.imageSections
+        ...data?.page.headerSections ?? [],
+        ...data?.page.imageSections ?? []
     ]
 
     const sortedSections = allSections.sort((a, b) => a.order - b.order);
