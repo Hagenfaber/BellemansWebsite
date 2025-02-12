@@ -21,7 +21,6 @@ jobs:
       VITE_REDIRECT_URI: ${{ vars.VITE_REDIRECT_URI }}
       VITE_AUTHORITY: ${{ vars.VITE_AUTHORITY }}
       VITE_AUDIENCE: ${{ vars.VITE_AUDIENCE }}
-      VITE_VERSION: ${{ github.ref_name }}
 
     steps:
       - name: Checkout repository
@@ -35,7 +34,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Extract metadata (tags, labels) for Docker
-        id: meta
+        id: meta-web
         uses: docker/metadata-action@v5
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-frontend
@@ -45,17 +44,16 @@ jobs:
         with:
           context: ./frontend
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          tags: ${{ steps.meta-web.outputs.tags }}
+          labels: ${{ steps.meta-web.outputs.labels }}
           build-args: |
-            VITE_VERSION=${{ github.ref_name }}
             VITE_API_URL=${{ vars.VITE_API_URL }}
             VITE_REDIRECT_URI=${{ vars.VITE_REDIRECT_URI }}
             VITE_AUTHORITY=${{ vars.VITE_AUTHORITY }}
             VITE_AUDIENCE=${{ vars.VITE_AUDIENCE }}
 
       - name: Extract metadata (tags, labels) for Docker
-        id: meta-web
+        id: meta-api
         uses: docker/metadata-action@v5
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-api
@@ -66,5 +64,5 @@ jobs:
           context: .
           file: ./Api/Dockerfile
           push: true
-          tags: ${{ steps.meta-web.outputs.tags }}
-          labels: ${{ steps.meta-web.outputs.labels }}
+          tags: ${{ steps.meta-api.outputs.tags }}
+          labels: ${{ steps.meta-api.outputs.labels }}
