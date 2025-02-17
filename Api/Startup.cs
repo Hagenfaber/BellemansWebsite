@@ -1,15 +1,10 @@
-using Api.Controllers.Pages.Shared;
 using Api.Infrastructure.Cors;
 using Api.Infrastructure.ExceptionHandlers;
 using Api.Infrastructure.JsonConverters;
 using Api.Infrastructure.MediatR;
-using Api.Infrastructure.OpenApi;
 using Database;
 using Domain;
-using Microsoft.AspNetCore.OpenApi;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.OpenApi;
-using Microsoft.OpenApi.Models;
 using Shared.Database;
 
 namespace Api;

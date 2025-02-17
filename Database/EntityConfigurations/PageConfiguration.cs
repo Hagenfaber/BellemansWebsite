@@ -25,6 +25,10 @@ public class PageConfiguration : IEntityTypeConfiguration<Page>
         builder.HasMany(p => p.ServicesSections)
             .WithMany();
         
+        builder.HasMany(p => p.ListSections)
+            .WithMany();
+        
+        
         builder.OwnsMany(p => p.PageSections, psb =>
         {
             psb.ToTable("PageSection");

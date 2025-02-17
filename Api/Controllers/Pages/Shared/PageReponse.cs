@@ -11,6 +11,7 @@ public class PageResponse
     public required IEnumerable<HeaderSectionResponse> HeaderSections { get; set; }
     public required IEnumerable<ImageSectionResponse> ImageSections { get; set; }
     public required IEnumerable<ServicesSectionResponse> ServicesSections { get; set; }
+    public required IEnumerable<ListSectionResponse> ListSections { get; set; }
 
     public static PageResponse Map(Page page)
     {
@@ -23,6 +24,7 @@ public class PageResponse
             HeaderSections = page.HeaderSections.Select(hs => HeaderSectionResponse.Map(hs, page.PageSections)),
             ImageSections = page.ImageSections.Select(imageSection => ImageSectionResponse.Map(imageSection, page.PageSections)),
             ServicesSections = page.ServicesSections.Select(servicesSection => ServicesSectionResponse.Map(servicesSection, page.PageSections)),
+            ListSections = page.ListSections.Select(listSection => ListSectionResponse.Map(listSection, page.PageSections)),
         };
     }
 }
