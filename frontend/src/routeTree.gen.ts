@@ -11,22 +11,14 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
-import { Route as DynamicImport } from './routes/dynamic'
-import { Route as AboutImport } from './routes/about'
+import { Route as HomeDraftImport } from './routes/homeDraft'
 import { Route as PagenameImport } from './routes/$pagename'
-import { Route as IndexImport } from './routes/index'
 
 // Create/Update Routes
 
-const DynamicRoute = DynamicImport.update({
-  id: '/dynamic',
-  path: '/dynamic',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const AboutRoute = AboutImport.update({
-  id: '/about',
-  path: '/about',
+const HomeDraftRoute = HomeDraftImport.update({
+  id: '/homeDraft',
+  path: '/homeDraft',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -36,23 +28,10 @@ const PagenameRoute = PagenameImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
-const IndexRoute = IndexImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => rootRoute,
-} as any)
-
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexImport
-      parentRoute: typeof rootRoute
-    }
     '/$pagename': {
       id: '/$pagename'
       path: '/$pagename'
@@ -60,18 +39,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PagenameImport
       parentRoute: typeof rootRoute
     }
-    '/about': {
-      id: '/about'
-      path: '/about'
-      fullPath: '/about'
-      preLoaderRoute: typeof AboutImport
-      parentRoute: typeof rootRoute
-    }
-    '/dynamic': {
-      id: '/dynamic'
-      path: '/dynamic'
-      fullPath: '/dynamic'
-      preLoaderRoute: typeof DynamicImport
+    '/homeDraft': {
+      id: '/homeDraft'
+      path: '/homeDraft'
+      fullPath: '/homeDraft'
+      preLoaderRoute: typeof HomeDraftImport
       parentRoute: typeof rootRoute
     }
   }
@@ -80,48 +52,38 @@ declare module '@tanstack/react-router' {
 // Create and export the route tree
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
   '/$pagename': typeof PagenameRoute
-  '/about': typeof AboutRoute
-  '/dynamic': typeof DynamicRoute
+  '/homeDraft': typeof HomeDraftRoute
 }
 
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
   '/$pagename': typeof PagenameRoute
-  '/about': typeof AboutRoute
-  '/dynamic': typeof DynamicRoute
+  '/homeDraft': typeof HomeDraftRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
-  '/': typeof IndexRoute
   '/$pagename': typeof PagenameRoute
-  '/about': typeof AboutRoute
-  '/dynamic': typeof DynamicRoute
+  '/homeDraft': typeof HomeDraftRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/$pagename' | '/about' | '/dynamic'
+  fullPaths: '/$pagename' | '/homeDraft'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/$pagename' | '/about' | '/dynamic'
-  id: '__root__' | '/' | '/$pagename' | '/about' | '/dynamic'
+  to: '/$pagename' | '/homeDraft'
+  id: '__root__' | '/$pagename' | '/homeDraft'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
   PagenameRoute: typeof PagenameRoute
-  AboutRoute: typeof AboutRoute
-  DynamicRoute: typeof DynamicRoute
+  HomeDraftRoute: typeof HomeDraftRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
   PagenameRoute: PagenameRoute,
-  AboutRoute: AboutRoute,
-  DynamicRoute: DynamicRoute,
+  HomeDraftRoute: HomeDraftRoute,
 }
 
 export const routeTree = rootRoute
@@ -134,23 +96,15 @@ export const routeTree = rootRoute
     "__root__": {
       "filePath": "__root.tsx",
       "children": [
-        "/",
         "/$pagename",
-        "/about",
-        "/dynamic"
+        "/homeDraft"
       ]
-    },
-    "/": {
-      "filePath": "index.tsx"
     },
     "/$pagename": {
       "filePath": "$pagename.tsx"
     },
-    "/about": {
-      "filePath": "about.tsx"
-    },
-    "/dynamic": {
-      "filePath": "dynamic.tsx"
+    "/homeDraft": {
+      "filePath": "homeDraft.tsx"
     }
   }
 }

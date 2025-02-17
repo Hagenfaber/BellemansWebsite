@@ -8,6 +8,7 @@ import "./index.css"
 const router = createRouter({
   routeTree,
   defaultPreload: 'intent',
+
 })
 
 // Register things for typesafety

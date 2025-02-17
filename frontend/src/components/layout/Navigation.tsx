@@ -10,15 +10,15 @@ export const Navigation = () => {
 
   return (
     <header className="px-4 lg:px-6 h-14 flex items-center">
-      <Link className="flex items-center justify-center" to="/">
+      <Link className="flex items-center justify-center" to="/homeDraft">
         <MountainIcon className="h-6 w-6"/>
         <span className="sr-only">Build your Edge</span>
       </Link>
       <nav className="ml-auto flex gap-4 sm:gap-6">
-        <NavItem url={"/#"}>Diensten</NavItem>
         {isFetching && <LoadingIndicator/>}
+        <NavItem url={`/homeDraft`} key={'homeDraft'} className={"capitalize"}>Home draft</NavItem>
         {pages && pages.pages?.map((page) => (
-          <NavItem url={`/${page.name}`} key={page.id} className={"capitalize"}>{page.name}</NavItem>
+          <NavItem url={`/${page.name}`} key={page.id} className={"capitalize"}>{page.title}</NavItem>
         ))}
       </nav>
     </header>
