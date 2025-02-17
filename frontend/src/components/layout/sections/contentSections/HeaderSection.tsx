@@ -21,20 +21,22 @@ export const HeaderSection = ({section}: Props) => {
                             {section.description}
                         </p>
                     </div>
-                    <div className="space-x-4">
+                    <div className="flex justify-center items-center gap-4 flex-row">
+                        {section.primaryCallToAction && (
+                            <Link
+                                variant={LinkType.Primary}
+                                href={section.primaryCallToAction?.url ?? ""}
+                            >
+                                {section.primaryCallToAction?.text}
+                            </Link>
+                        )}
 
-                        <Link
-                            variant={LinkType.Primary}
-                            href={section.primaryCallToAction?.url ?? ""}
-                        >
-                            {section.primaryCallToAction?.text}
-                        </Link>
-                        <Link
+                        {section.secondaryCallToAction && (<Link
                             variant={LinkType.Secondary}
                             href={section.secondaryCallToAction?.url ?? ""}
                         >
                             {section.secondaryCallToAction?.text}
-                        </Link>
+                        </Link>)}
                     </div>
                 </div>
             </div>

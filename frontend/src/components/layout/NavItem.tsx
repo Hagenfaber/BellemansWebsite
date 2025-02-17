@@ -7,11 +7,12 @@ interface Props {
     children?: ReactNode | string;
     url?: string;
     className?: string;
+    onClick?: () => void;
 }
 
-export const NavItem = ({ children, url, className }: Props) => {
+export const NavItem = ({ children, url, className, onClick }: Props) => {
     return (
-        <Link className={cn("text-sm font-medium hover:underline underline-offset-4", className)} href={url}>
+        <Link onClick={onClick} className={cn("text-sm font-medium hover:underline underline-offset-4 p-4", className)} to={url}>
             {children}
         </Link>
     )

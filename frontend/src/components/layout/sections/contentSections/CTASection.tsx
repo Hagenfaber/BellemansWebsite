@@ -2,7 +2,6 @@ import {Link} from "@tanstack/react-router";
 import * as React from "react";
 import {Section} from "@/components/layout/sections/Section";
 
-
 export const CTASection = () => {
     return (
         <Section className="bg-gray-100 dark:bg-gray-800">
