@@ -1,5 +1,4 @@
-﻿
-using Api.Controllers.Pages.Shared;
+﻿using Api.Controllers.Pages.Shared;
 using Domain.Page.repository;
 using Shared.Api;
 

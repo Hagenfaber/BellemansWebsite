@@ -20,5 +20,4 @@ public sealed class ImageSection : Entity<Guid>
         
         return new ImageSection(imageUrl);
     }
-    
 }
