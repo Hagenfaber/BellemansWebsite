@@ -1,14 +1,15 @@
 import { createFileRoute, Outlet } from "@tanstack/react-router";
 
-export const Route = createFileRoute("/dynamic/$pagename")({
+export const Route = createFileRoute("/$pagename")({
   component: Component,
 })
 
 function Component() {
+  const {pagename} = Route.useParams()
 
   return(
     <div>
-      <Outlet/>
+      {pagename}
     </div>
   )
 }
