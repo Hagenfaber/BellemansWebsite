@@ -4,6 +4,7 @@ namespace Domain.Section.ListSection;
 
 public sealed class ListStyle : SmartEnum<ListStyle>
 {
+    public static readonly ListStyle None = new ListStyle(nameof(None), 0);
     public static readonly ListStyle Icon = new ListStyle(nameof(Icon), 1);
     public static readonly ListStyle Dot = new ListStyle(nameof(Dot), 2);
     public static readonly ListStyle Checkmark = new ListStyle(nameof(Checkmark), 3);

@@ -27,6 +27,7 @@ public class ListSectionResponse
 
 public sealed class ListStyleResponse : SmartEnum<ListStyleResponse>
 {
+    public static readonly ListStyleResponse None = new ListStyleResponse(nameof(None), 0);
     public static readonly ListStyleResponse Icon = new ListStyleResponse(nameof(Icon), 1);
     public static readonly ListStyleResponse Dot = new ListStyleResponse(nameof(Dot), 2);
     public static readonly ListStyleResponse Checkmark = new ListStyleResponse(nameof(Checkmark), 3);
