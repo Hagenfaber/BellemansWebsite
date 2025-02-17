@@ -1,4 +1,3 @@
-using Domain.Section;
 using Shared.Domain;
 using Shared.Domain.Validation;
 

@@ -1,7 +1,5 @@
-﻿using Domain.Page;
-using Domain.Section;
-using Domain.Section.ServicesSection;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using SmartEnum.EFCore;
 
 namespace Database;
 
@@ -26,5 +24,10 @@ public class BellemansDbContext : DbContext
   {
     modelBuilder.HasDefaultSchema(DefaultSchema);
     modelBuilder.ApplyConfigurationsFromAssembly(typeof(BellemansDbContext).Assembly);
+  }
+  
+  protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
+  {
+    configurationBuilder.ConfigureSmartEnum();
   }
 }
