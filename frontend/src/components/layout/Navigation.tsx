@@ -6,8 +6,8 @@ import { usePagesGetAll } from "@/endpoints/bellemansComponents";
 import { LoadingIndicator } from "@/components/ui/loadingIndicator";
 import {useState} from "react";
 import {Button} from "@/components/ui/button";
-import {MenuIcon} from "@/components/Icons/Menu";
 import {CloseIcon} from "@/components/Icons/Close";
+import {DynamicIcon} from "lucide-react/dynamic";
 
 export const Navigation = () => {
   const {data: pages, isFetching} = usePagesGetAll({});
@@ -30,8 +30,8 @@ export const Navigation = () => {
 
           <nav className="ml-auto gap-4 sm:gap-6 flex md:hidden flex-col">
               <Button className="flex items-center justify-center border-none bg-transparent shadow-none" onClick={() => setNavOpen(!navOpen)}>
-                  {!navOpen && <MenuIcon className="h-10 w-10 text-primary-foreground"/>}
-                  {navOpen && <CloseIcon className="h-10 w-10 text-primary-foreground"/>}
+                  {!navOpen && <DynamicIcon name={"menu"} className="h-10 w-10 text-primary-foreground"/>}
+                  {navOpen && <DynamicIcon name={"x"} className="h-10 w-10 text-primary-foreground"/>}
                   <span className="sr-only">Build your Edge</span>
               </Button>
           </nav>

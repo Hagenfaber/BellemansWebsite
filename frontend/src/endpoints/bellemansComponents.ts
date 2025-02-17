@@ -4,10 +4,19 @@
  * @version 1.0.0
  */
 import * as reactQuery from "@tanstack/react-query";
-import { useBellemansContext, BellemansContext } from "./bellemansContext";
+import {
+  useBellemansContext,
+  BellemansContext,
+  queryKeyFn,
+} from "./bellemansContext";
+import { deepMerge } from "./bellemansUtils";
 import type * as Fetcher from "./bellemansFetcher";
 import { bellemansFetch } from "./bellemansFetcher";
 import type * as Schemas from "./bellemansSchemas";
+
+type QueryFnOptions = {
+  signal?: AbortController["signal"];
+};
 
 export type PagesGetAllError = Fetcher.ErrorWrapper<{
   status: 400;
@@ -29,7 +38,37 @@ export const fetchPagesGetAll = (
     {}
   >({ url: "/pages", method: "get", ...variables, signal });
 
-export const usePagesGetAll = <TData = Schemas.GetAllPagesResponse,>(
+export function pagesGetAllQuery(variables: PagesGetAllVariables): {
+  queryKey: reactQuery.QueryKey;
+  queryFn: (options: QueryFnOptions) => Promise<Schemas.GetAllPagesResponse>;
+};
+
+export function pagesGetAllQuery(
+  variables: PagesGetAllVariables | reactQuery.SkipToken,
+): {
+  queryKey: reactQuery.QueryKey;
+  queryFn:
+    | ((options: QueryFnOptions) => Promise<Schemas.GetAllPagesResponse>)
+    | reactQuery.SkipToken;
+};
+
+export function pagesGetAllQuery(
+  variables: PagesGetAllVariables | reactQuery.SkipToken,
+) {
+  return {
+    queryKey: queryKeyFn({
+      path: "/pages",
+      operationId: "pagesGetAll",
+      variables,
+    }),
+    queryFn:
+      variables === reactQuery.skipToken
+        ? reactQuery.skipToken
+        : ({ signal }: QueryFnOptions) => fetchPagesGetAll(variables, signal),
+  };
+}
+
+export const useSuspensePagesGetAll = <TData = Schemas.GetAllPagesResponse,>(
   variables: PagesGetAllVariables,
   options?: Omit<
     reactQuery.UseQueryOptions<
@@ -40,20 +79,36 @@ export const usePagesGetAll = <TData = Schemas.GetAllPagesResponse,>(
     "queryKey" | "queryFn" | "initialData"
   >,
 ) => {
-  const { fetcherOptions, queryOptions, queryKeyFn } =
-    useBellemansContext(options);
+  const { queryOptions, fetcherOptions } = useBellemansContext(options);
+  return reactQuery.useSuspenseQuery<
+    Schemas.GetAllPagesResponse,
+    PagesGetAllError,
+    TData
+  >({
+    ...pagesGetAllQuery(deepMerge(fetcherOptions, variables)),
+    ...options,
+    ...queryOptions,
+  });
+};
+
+export const usePagesGetAll = <TData = Schemas.GetAllPagesResponse,>(
+  variables: PagesGetAllVariables | reactQuery.SkipToken,
+  options?: Omit<
+    reactQuery.UseQueryOptions<
+      Schemas.GetAllPagesResponse,
+      PagesGetAllError,
+      TData
+    >,
+    "queryKey" | "queryFn" | "initialData"
+  >,
+) => {
+  const { queryOptions, fetcherOptions } = useBellemansContext(options);
   return reactQuery.useQuery<
     Schemas.GetAllPagesResponse,
     PagesGetAllError,
     TData
   >({
-    queryKey: queryKeyFn({
-      path: "/pages",
-      operationId: "pagesGetAll",
-      variables,
-    }),
-    queryFn: ({ signal }) =>
-      fetchPagesGetAll({ ...fetcherOptions, ...variables }, signal),
+    ...pagesGetAllQuery(deepMerge(fetcherOptions, variables)),
     ...options,
     ...queryOptions,
   });
@@ -85,7 +140,37 @@ export const fetchPagesGetById = (
     PagesGetByIdPathParams
   >({ url: "/pages/{name}", method: "get", ...variables, signal });
 
-export const usePagesGetById = <TData = Schemas.GetPageByNameResponse,>(
+export function pagesGetByIdQuery(variables: PagesGetByIdVariables): {
+  queryKey: reactQuery.QueryKey;
+  queryFn: (options: QueryFnOptions) => Promise<Schemas.GetPageByNameResponse>;
+};
+
+export function pagesGetByIdQuery(
+  variables: PagesGetByIdVariables | reactQuery.SkipToken,
+): {
+  queryKey: reactQuery.QueryKey;
+  queryFn:
+    | ((options: QueryFnOptions) => Promise<Schemas.GetPageByNameResponse>)
+    | reactQuery.SkipToken;
+};
+
+export function pagesGetByIdQuery(
+  variables: PagesGetByIdVariables | reactQuery.SkipToken,
+) {
+  return {
+    queryKey: queryKeyFn({
+      path: "/pages/{name}",
+      operationId: "pagesGetById",
+      variables,
+    }),
+    queryFn:
+      variables === reactQuery.skipToken
+        ? reactQuery.skipToken
+        : ({ signal }: QueryFnOptions) => fetchPagesGetById(variables, signal),
+  };
+}
+
+export const useSuspensePagesGetById = <TData = Schemas.GetPageByNameResponse,>(
   variables: PagesGetByIdVariables,
   options?: Omit<
     reactQuery.UseQueryOptions<
@@ -96,20 +181,36 @@ export const usePagesGetById = <TData = Schemas.GetPageByNameResponse,>(
     "queryKey" | "queryFn" | "initialData"
   >,
 ) => {
-  const { fetcherOptions, queryOptions, queryKeyFn } =
-    useBellemansContext(options);
+  const { queryOptions, fetcherOptions } = useBellemansContext(options);
+  return reactQuery.useSuspenseQuery<
+    Schemas.GetPageByNameResponse,
+    PagesGetByIdError,
+    TData
+  >({
+    ...pagesGetByIdQuery(deepMerge(fetcherOptions, variables)),
+    ...options,
+    ...queryOptions,
+  });
+};
+
+export const usePagesGetById = <TData = Schemas.GetPageByNameResponse,>(
+  variables: PagesGetByIdVariables | reactQuery.SkipToken,
+  options?: Omit<
+    reactQuery.UseQueryOptions<
+      Schemas.GetPageByNameResponse,
+      PagesGetByIdError,
+      TData
+    >,
+    "queryKey" | "queryFn" | "initialData"
+  >,
+) => {
+  const { queryOptions, fetcherOptions } = useBellemansContext(options);
   return reactQuery.useQuery<
     Schemas.GetPageByNameResponse,
     PagesGetByIdError,
     TData
   >({
-    queryKey: queryKeyFn({
-      path: "/pages/{name}",
-      operationId: "pagesGetById",
-      variables,
-    }),
-    queryFn: ({ signal }) =>
-      fetchPagesGetById({ ...fetcherOptions, ...variables }, signal),
+    ...pagesGetByIdQuery(deepMerge(fetcherOptions, variables)),
     ...options,
     ...queryOptions,
   });
@@ -119,10 +220,10 @@ export type QueryOperation =
   | {
       path: "/pages";
       operationId: "pagesGetAll";
-      variables: PagesGetAllVariables;
+      variables: PagesGetAllVariables | reactQuery.SkipToken;
     }
   | {
       path: "/pages/{name}";
       operationId: "pagesGetById";
-      variables: PagesGetByIdVariables;
+      variables: PagesGetByIdVariables | reactQuery.SkipToken;
     };
