@@ -1,6 +1,7 @@
 ﻿import { createFileRoute, Outlet } from "@tanstack/react-router";
 import {HeaderSection} from "@/components/layout/sections/contentSections/HeaderSection";
 import {CTASection} from "@/components/layout/sections/contentSections/CTASection";
+import {ListSection} from "@/components/layout/sections/contentSections/ListSection";
 
 export const Route = createFileRoute("/homeDraft")({
     component: Component,
@@ -22,6 +23,8 @@ function Component() {
                     url: "/about",
                 }
             }} />
+            
+            <ListSection />
         </>
     )
 }

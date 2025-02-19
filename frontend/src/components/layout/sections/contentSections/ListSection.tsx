@@ -1,17 +1,22 @@
 ﻿import {Link} from "@tanstack/react-router";
 import * as React from "react";
 import {Section} from "@/components/layout/sections/Section";
-
-interface Props {
-    section: 
-}
+// @ts-ignore
+import Brick from "@/components/icons/brick.png";
 
 export const ListSection = () => {
     return (
-        <Section>
-            <div className="container px-4 md:px-6">
-                
-            </div>
-        </Section>
+        <div
+             className={`w-full flex justify-center items-center`}>
+                <div className="" style={{
+                    width: "100%",
+                    height: "400px",
+                    backgroundImage: "url(" + Brick + ")",
+                    backgroundPosition: "center",
+                    backgroundSize: "8rem",
+                }}>
+        
+                </div>
+        </div>
     );
 }
