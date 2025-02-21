@@ -17,10 +17,10 @@ export default function Expectations() {
     <section className="py-20 px-4 bg-white" style={{
       backgroundImage:  "url(" + Tile + ")"
     }}>
-      <div className={"container mx-auto flex flex-row gap-10 max-h-[500px] h-full"}>
-        <div className={"flex-1 shadow-2xl rounded shadow-[#7DF7B5] overflow-hidden"}>
+      <div className={"container mx-auto flex flex-row gap-10 h-full"}>
+        <div className={"hidden md:flex flex-1 overflow-hidden justify-center items-center"}>
           <img src={StrongMan} alt={"strong-man"}
-               className={"max-h-full"}/>
+               className={"max-h-full shadow-2xl rounded shadow-[#7DF7B5]"}/>
         </div>
 
         <div className="bg-white p-6 rounded shadow-2xl shadow-[#7DF7B5] flex-3">
