@@ -6,6 +6,7 @@ import {Menu, X} from "lucide-react";
 import logo from "@/images/buildyouredge_logo_2_sm.png";
 import {NavItem} from "@/components/layout/NavItem";
 import {Sheet, SheetContent, SheetTrigger} from "../ui/sheet";
+import {Logo} from "@/components/Icons/Logo";
 
 export const Navigation = () => {
   const {data: pages, isFetching} = usePagesGetAll({});
@@ -16,7 +17,7 @@ export const Navigation = () => {
       <header className="bg-[#264038] text-white p-4">
           <div className="container mx-auto flex justify-between items-center">
               <div className="text-2xl font-bold text-[#7DF7B5]">
-                  <img src={logo} alt={"build-your-edge"} className={"w-20"} />
+                  <Logo />
               </div>
               <nav className="hidden md:flex space-x-4">
                   <NavItem url={"/individuals"}>Individuals</NavItem>
