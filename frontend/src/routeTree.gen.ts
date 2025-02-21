@@ -13,7 +13,6 @@
 import { Route as rootRoute } from './routes/__root'
 import { Route as TeamsIndexImport } from './routes/teams/index'
 import { Route as IndividualsIndexImport } from './routes/individuals/index'
-import { Route as UiDesignHomeDraftImport } from './routes/uiDesign/homeDraft'
 import { Route as DynamicPagenameImport } from './routes/dynamic/$pagename'
 
 // Create/Update Routes
@@ -27,12 +26,6 @@ const TeamsIndexRoute = TeamsIndexImport.update({
 const IndividualsIndexRoute = IndividualsIndexImport.update({
   id: '/individuals/',
   path: '/individuals/',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const UiDesignHomeDraftRoute = UiDesignHomeDraftImport.update({
-  id: '/uiDesign/homeDraft',
-  path: '/uiDesign/homeDraft',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -51,13 +44,6 @@ declare module '@tanstack/react-router' {
       path: '/dynamic/$pagename'
       fullPath: '/dynamic/$pagename'
       preLoaderRoute: typeof DynamicPagenameImport
-      parentRoute: typeof rootRoute
-    }
-    '/uiDesign/homeDraft': {
-      id: '/uiDesign/homeDraft'
-      path: '/uiDesign/homeDraft'
-      fullPath: '/uiDesign/homeDraft'
-      preLoaderRoute: typeof UiDesignHomeDraftImport
       parentRoute: typeof rootRoute
     }
     '/individuals/': {
@@ -81,14 +67,12 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/dynamic/$pagename': typeof DynamicPagenameRoute
-  '/uiDesign/homeDraft': typeof UiDesignHomeDraftRoute
   '/individuals': typeof IndividualsIndexRoute
   '/teams': typeof TeamsIndexRoute
 }
 
 export interface FileRoutesByTo {
   '/dynamic/$pagename': typeof DynamicPagenameRoute
-  '/uiDesign/homeDraft': typeof UiDesignHomeDraftRoute
   '/individuals': typeof IndividualsIndexRoute
   '/teams': typeof TeamsIndexRoute
 }
@@ -96,39 +80,27 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/dynamic/$pagename': typeof DynamicPagenameRoute
-  '/uiDesign/homeDraft': typeof UiDesignHomeDraftRoute
   '/individuals/': typeof IndividualsIndexRoute
   '/teams/': typeof TeamsIndexRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | '/dynamic/$pagename'
-    | '/uiDesign/homeDraft'
-    | '/individuals'
-    | '/teams'
+  fullPaths: '/dynamic/$pagename' | '/individuals' | '/teams'
   fileRoutesByTo: FileRoutesByTo
-  to: '/dynamic/$pagename' | '/uiDesign/homeDraft' | '/individuals' | '/teams'
-  id:
-    | '__root__'
-    | '/dynamic/$pagename'
-    | '/uiDesign/homeDraft'
-    | '/individuals/'
-    | '/teams/'
+  to: '/dynamic/$pagename' | '/individuals' | '/teams'
+  id: '__root__' | '/dynamic/$pagename' | '/individuals/' | '/teams/'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   DynamicPagenameRoute: typeof DynamicPagenameRoute
-  UiDesignHomeDraftRoute: typeof UiDesignHomeDraftRoute
   IndividualsIndexRoute: typeof IndividualsIndexRoute
   TeamsIndexRoute: typeof TeamsIndexRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   DynamicPagenameRoute: DynamicPagenameRoute,
-  UiDesignHomeDraftRoute: UiDesignHomeDraftRoute,
   IndividualsIndexRoute: IndividualsIndexRoute,
   TeamsIndexRoute: TeamsIndexRoute,
 }
@@ -144,16 +116,12 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/dynamic/$pagename",
-        "/uiDesign/homeDraft",
         "/individuals/",
         "/teams/"
       ]
     },
     "/dynamic/$pagename": {
       "filePath": "dynamic/$pagename.tsx"
-    },
-    "/uiDesign/homeDraft": {
-      "filePath": "uiDesign/homeDraft.tsx"
     },
     "/individuals/": {
       "filePath": "individuals/index.tsx"
