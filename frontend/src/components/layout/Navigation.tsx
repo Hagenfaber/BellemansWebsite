@@ -1,26 +1,45 @@
-import { Link } from "@tanstack/react-router";
-import { MountainIcon } from "@/components/Icons/Mountain";
 import * as React from "react";
-import { NavItem } from "@/components/layout/NavItem";
 import { usePagesGetAll } from "@/endpoints/bellemansComponents";
-import { LoadingIndicator } from "@/components/ui/loadingIndicator";
+import {useState} from "react";
+import {Menu, X} from "lucide-react";
+// @ts-ignore
+import logo from "@/images/buildyouredge_logo_2_sm.png";
+import {NavItem} from "@/components/layout/NavItem";
+import {Sheet, SheetContent, SheetTrigger} from "../ui/sheet";
+import {Logo} from "@/components/Icons/Logo";
 
 export const Navigation = () => {
   const {data: pages, isFetching} = usePagesGetAll({});
+  
+  const [navOpen, setNavOpen] = useState(false);
 
   return (
-    <header className="px-4 lg:px-6 h-14 flex items-center">
-      <Link className="flex items-center justify-center" to="/">
-        <MountainIcon className="h-6 w-6"/>
-        <span className="sr-only">Build your Edge</span>
-      </Link>
-      <nav className="ml-auto flex gap-4 sm:gap-6">
-        <NavItem url={"/#"}>Diensten</NavItem>
-        {isFetching && <LoadingIndicator/>}
-        {pages && pages.pages?.map((page) => (
-          <NavItem url={`/${page.name}`} key={page.id} className={"capitalize"}>{page.name}</NavItem>
-        ))}
-      </nav>
-    </header>
+      <header className="bg-[#264038] text-white p-4">
+          <div className="container mx-auto flex justify-between items-center">
+              <div className="text-2xl font-bold text-[#7DF7B5]">
+                  <Logo />
+              </div>
+              <nav className="hidden md:flex space-x-4">
+                  <NavItem url={"/individuals"}>Individuals</NavItem>
+                  <NavItem url={"/teams"}>Teams</NavItem>
+                  <NavItem url={"/about"}>Over</NavItem>
+              </nav>
+
+              <Sheet open={navOpen} onOpenChange={setNavOpen}>
+                  <SheetTrigger asChild>
+                      <button className="md:hidden" onClick={() => setNavOpen(!navOpen)}>
+                          {navOpen ? <X size={24}/> : <Menu size={24}/>}
+                      </button>
+                  </SheetTrigger>
+                  <SheetContent>
+                      <div className={"flex flex-col"}>
+                          <NavItem onClick={() => setNavOpen(false)} url={"/individuals"}>Individuals</NavItem>
+                          <NavItem onClick={() => setNavOpen(false)} url={"/teams"}>Teams</NavItem>
+                          <NavItem onClick={() => setNavOpen(false)} url={"/about"}>Over</NavItem>
+                      </div>
+                  </SheetContent>
+              </Sheet>
+          </div>
+      </header>
   )
 }
