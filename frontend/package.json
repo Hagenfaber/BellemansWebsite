@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "typecheck": "tsc --noEmit",
-    "dev": "tsr watch && vite --port=3001",
+    "dev": "tsr watch & vite --port=3001",
     "build": "vite build",
     "buildWithRollupVisualizer": "vite build --mode development",
     "transform-perf": "vite --debug plugin-transform",
