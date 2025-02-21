@@ -12,7 +12,8 @@ interface Props {
 
 export const NavItem = ({ children, url, className, onClick }: Props) => {
     return (
-        <Link onClick={onClick} className={cn("text-sm font-medium hover:underline underline-offset-4 p-4", className)} to={url}>
+        <Link onClick={onClick} className={cn("text-sm font-medium p-4 hover:text-[#7DF7B5]", className)}
+              to={url}>
             {children}
         </Link>
     )

@@ -1,6 +1,6 @@
 import { createFileRoute, Outlet } from "@tanstack/react-router";
 
-export const Route = createFileRoute("/$pagename")({
+export const Route = createFileRoute("/dynamic/$pagename")({
   component: Component,
 })
 
