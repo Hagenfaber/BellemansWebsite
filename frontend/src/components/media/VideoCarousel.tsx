@@ -19,8 +19,8 @@ const VideoCarousel = ({ videos, speed = 50 }) => {
         >
             <motion.div
                 className="flex h-full"
-                initial={{ x: 0 }}
-                animate={{ x: "-100%" }}
+                initial={{ x: `-${parseInt(`${Math.random() * 100}`)}%` }}
+                animate={{ x: "-1000%" }}
                 transition={{ ease: "linear", duration: speed, repeat: Infinity }}
             >
                 <>
@@ -28,7 +28,6 @@ const VideoCarousel = ({ videos, speed = 50 }) => {
                         <video
                             key={index}
                             src={video}
-                            className="shrink-0 h-full"
                             muted
                             autoPlay
                             loop

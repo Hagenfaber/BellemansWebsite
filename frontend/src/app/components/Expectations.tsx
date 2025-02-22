@@ -18,7 +18,7 @@ export default function Expectations() {
       backgroundImage:  "url(" + Tile + ")"
     }}>
       <div className={"container mx-auto flex flex-row gap-10 h-full"}>
-        <div className={"hidden md:flex flex-1 overflow-hidden justify-center items-center"}>
+        <div className={"hidden md:flex flex-1 justify-center items-center"}>
           <img src={StrongMan} alt={"strong-man"}
                className={"max-h-full shadow-2xl rounded shadow-[#7DF7B5]"}/>
         </div>
