@@ -23,7 +23,7 @@ public class CommandLineParser
     {
         var path = GetOptionValue("--input");
         if (string.IsNullOrEmpty(path))
-            throw new FileNotFoundException("Input file not specified");
+            throw new FileNotFoundException("Input path not specified");
         return path;
     }
 
@@ -31,8 +31,13 @@ public class CommandLineParser
     {
         var path = GetOptionValue("--output");
         if (string.IsNullOrEmpty(path))
-            throw new FileNotFoundException("Output file not specified");
+            throw new FileNotFoundException("Output path not specified");
         return path;
+    }
+
+    public bool IsDirectoryProcessing()
+    {
+        return GetOptionValue("--directory") != null;
     }
 
     public CompressionOptions GetCompressionOptions()
