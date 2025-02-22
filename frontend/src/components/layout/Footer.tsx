@@ -2,6 +2,7 @@ import {Link} from "@tanstack/react-router";
 import * as React from "react";
 import {FooterItem} from "@/components/layout/FooterItem";
 import {Logo} from "@/components/Icons/Logo";
+import {NavItem} from "@/components/layout/NavItem";
 
 
 export const Footer = () => {
@@ -16,18 +17,9 @@ export const Footer = () => {
                         <p className="text-sm text-[#BDC5C3]">Mentale training voor topprestaties</p>
                     </div>
                     <nav className="flex-1 flex justify-center space-x-4 mb-4 md:mb-0">
-                        <a href="#" className="hover:text-[#7DF7B5]">
-                            Home
-                        </a>
-                        <a href="#" className="hover:text-[#7DF7B5]">
-                            Diensten
-                        </a>
-                        <a href="#" className="hover:text-[#7DF7B5]">
-                            Over
-                        </a>
-                        <a href="#" className="hover:text-[#7DF7B5]">
-                            Contact
-                        </a>
+                        <NavItem url={"/"}>Individuals</NavItem>
+                        <NavItem url={"/teams"}>Teams</NavItem>
+                        <NavItem url={"/about"}>Over</NavItem>
                     </nav>
                     <div className="flex-1 text-sm text-[#BDC5C3]">© 2025 SportPsycholoog. Alle rechten voorbehouden.</div>
                 </div>

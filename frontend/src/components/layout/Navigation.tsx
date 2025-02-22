@@ -9,8 +9,6 @@ import {Sheet, SheetContent, SheetTrigger} from "../ui/sheet";
 import {Logo} from "@/components/Icons/Logo";
 
 export const Navigation = () => {
-  const {data: pages, isFetching} = usePagesGetAll({});
-  
   const [navOpen, setNavOpen] = useState(false);
 
   return (
@@ -20,7 +18,7 @@ export const Navigation = () => {
                   <Logo />
               </div>
               <nav className="hidden md:flex space-x-4">
-                  <NavItem url={"/individuals"}>Individuals</NavItem>
+                  <NavItem url={"/"}>Individuals</NavItem>
                   <NavItem url={"/teams"}>Teams</NavItem>
                   <NavItem url={"/about"}>Over</NavItem>
               </nav>
@@ -33,7 +31,7 @@ export const Navigation = () => {
                   </SheetTrigger>
                   <SheetContent>
                       <div className={"flex flex-col"}>
-                          <NavItem onClick={() => setNavOpen(false)} url={"/individuals"}>Individuals</NavItem>
+                          <NavItem onClick={() => setNavOpen(false)} url={"/"}>Individuals</NavItem>
                           <NavItem onClick={() => setNavOpen(false)} url={"/teams"}>Teams</NavItem>
                           <NavItem onClick={() => setNavOpen(false)} url={"/about"}>Over</NavItem>
                       </div>

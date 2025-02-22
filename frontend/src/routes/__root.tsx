@@ -23,7 +23,7 @@ function RootComponent() {
           </main>
           <Footer/>
         </div>
-        <ReactQueryDevtools initialIsOpen={false} position={"bottom"}/>
+        {/*<ReactQueryDevtools initialIsOpen={false} position={"bottom"}/>*/}
       </QueryClientProvider>
     </>
   )

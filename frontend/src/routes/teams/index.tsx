@@ -12,10 +12,10 @@ export const Route = createFileRoute('/teams/')({
 
 export default function TeamsPage() {
     return (
-        <div className="min-h-screen bg-[#E7EFED]">
-            <Hero 
-                title={"Maximaliseer teamprestaties met wetenschappelijk onderbouwde sportpsychologie"} 
-                subtitle={"Mentale kracht is de nieuwe concurrentievoorsprong"} 
+        <div className="">
+            <Hero
+                title={"Maximaliseer teamprestaties met wetenschappelijk onderbouwde sportpsychologie"}
+                subtitle={"Mentale kracht is de nieuwe concurrentievoorsprong"}
                 description={" Succesvolle teams begrijpen: techniek, tactiek en fysieke training brengen je ver, maar al te vaak maakt mentale kracht het verschil tussen winnen en verliezen."}
                 callToAction={{url: "/teams", text: "Ontdek onze aanpak"}}
             />

@@ -5,7 +5,7 @@ import Approach from "@/app/components/Approach";
 import CallToAction from "@/app/components/CallToAction";
 import Hero from "@/components/layout/sections/Hero";
 
-export const Route = createFileRoute('/individuals/')({
+export const Route = createFileRoute('/')({
   component: RouteComponent,
 })
 
