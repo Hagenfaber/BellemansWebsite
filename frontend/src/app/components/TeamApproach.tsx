@@ -1,4 +1,5 @@
 import { Database, Brain, Users, Zap } from "lucide-react"
+import Tile from "@/images/block_tile.png";
 
 const approachPoints = [
   {
@@ -29,14 +30,16 @@ const approachPoints = [
 
 export default function TeamApproach() {
   return (
-    <section className="py-20 px-4 bg-[#fcf2cf]">
+    <section className="py-20 px-4 bg-white" style={{
+      backgroundImage:  "url(" + Tile + ")"
+    }}>
       <div className="container mx-auto">
         <h2 className="text-3xl font-bold text-center text-[#264038] mb-12">
           Niet alleen theorie, wel toegepaste sportpsychologie op topniveau
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {approachPoints.map((point, index) => (
-            <div key={index} className="bg-white p-6 rounded-lg shadow-md">
+            <div key={index} className="bg-white p-6 rounded-md shadow-2xl shadow-[#7DF7B5]">
               <point.icon className="w-12 h-12 text-[#7DF7B5] mb-4" />
               <h3 className="text-xl font-semibold text-[#264038] mb-2">{point.title}</h3>
               <p className="text-[#264038]">{point.description}</p>

@@ -11,21 +11,21 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as IndexImport } from './routes/index'
 import { Route as TeamsIndexImport } from './routes/teams/index'
-import { Route as IndividualsIndexImport } from './routes/individuals/index'
 import { Route as DynamicPagenameImport } from './routes/dynamic/$pagename'
 
 // Create/Update Routes
 
-const TeamsIndexRoute = TeamsIndexImport.update({
-  id: '/teams/',
-  path: '/teams/',
+const IndexRoute = IndexImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRoute,
 } as any)
 
-const IndividualsIndexRoute = IndividualsIndexImport.update({
-  id: '/individuals/',
-  path: '/individuals/',
+const TeamsIndexRoute = TeamsIndexImport.update({
+  id: '/teams/',
+  path: '/teams/',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -39,18 +39,18 @@ const DynamicPagenameRoute = DynamicPagenameImport.update({
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexImport
+      parentRoute: typeof rootRoute
+    }
     '/dynamic/$pagename': {
       id: '/dynamic/$pagename'
       path: '/dynamic/$pagename'
       fullPath: '/dynamic/$pagename'
       preLoaderRoute: typeof DynamicPagenameImport
-      parentRoute: typeof rootRoute
-    }
-    '/individuals/': {
-      id: '/individuals/'
-      path: '/individuals'
-      fullPath: '/individuals'
-      preLoaderRoute: typeof IndividualsIndexImport
       parentRoute: typeof rootRoute
     }
     '/teams/': {
@@ -66,42 +66,42 @@ declare module '@tanstack/react-router' {
 // Create and export the route tree
 
 export interface FileRoutesByFullPath {
+  '/': typeof IndexRoute
   '/dynamic/$pagename': typeof DynamicPagenameRoute
-  '/individuals': typeof IndividualsIndexRoute
   '/teams': typeof TeamsIndexRoute
 }
 
 export interface FileRoutesByTo {
+  '/': typeof IndexRoute
   '/dynamic/$pagename': typeof DynamicPagenameRoute
-  '/individuals': typeof IndividualsIndexRoute
   '/teams': typeof TeamsIndexRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
+  '/': typeof IndexRoute
   '/dynamic/$pagename': typeof DynamicPagenameRoute
-  '/individuals/': typeof IndividualsIndexRoute
   '/teams/': typeof TeamsIndexRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/dynamic/$pagename' | '/individuals' | '/teams'
+  fullPaths: '/' | '/dynamic/$pagename' | '/teams'
   fileRoutesByTo: FileRoutesByTo
-  to: '/dynamic/$pagename' | '/individuals' | '/teams'
-  id: '__root__' | '/dynamic/$pagename' | '/individuals/' | '/teams/'
+  to: '/' | '/dynamic/$pagename' | '/teams'
+  id: '__root__' | '/' | '/dynamic/$pagename' | '/teams/'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
+  IndexRoute: typeof IndexRoute
   DynamicPagenameRoute: typeof DynamicPagenameRoute
-  IndividualsIndexRoute: typeof IndividualsIndexRoute
   TeamsIndexRoute: typeof TeamsIndexRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
+  IndexRoute: IndexRoute,
   DynamicPagenameRoute: DynamicPagenameRoute,
-  IndividualsIndexRoute: IndividualsIndexRoute,
   TeamsIndexRoute: TeamsIndexRoute,
 }
 
@@ -115,16 +115,16 @@ export const routeTree = rootRoute
     "__root__": {
       "filePath": "__root.tsx",
       "children": [
+        "/",
         "/dynamic/$pagename",
-        "/individuals/",
         "/teams/"
       ]
     },
+    "/": {
+      "filePath": "index.tsx"
+    },
     "/dynamic/$pagename": {
       "filePath": "dynamic/$pagename.tsx"
-    },
-    "/individuals/": {
-      "filePath": "individuals/index.tsx"
     },
     "/teams/": {
       "filePath": "teams/index.tsx"

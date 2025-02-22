@@ -34,7 +34,7 @@ export default function Hero({title, subtitle, description, callToAction}: Props
               </div>
           )}
         </div>
-          <VideoCarousel videos={[basket, ballet, Boxer, Gym, Cyclist]} height={200} speed={50} />
+      <VideoCarousel videos={[basket, ballet, Boxer, Gym, Cyclist]} />
       </section>
   )
 }
