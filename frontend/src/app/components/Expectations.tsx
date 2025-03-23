@@ -1,4 +1,5 @@
 import { CheckIcon } from "@radix-ui/react-icons";
+import brickPrimary from "@/images/buildyouredge_illustratie_2.png";
 
 // @ts-ignore
 import Tile from "@/images/block_tile.png";
@@ -6,10 +7,22 @@ import Tile from "@/images/block_tile.png";
 import StrongMan from "@/images/strong_man.jpg";
 
 const expectations = [
-  "Individuele begeleiding – Geen standaardadvies, maar mentale strategieën op maat voor jouw sport, uitdagingen en doelen",
-  "Direct toepasbare technieken – Praktische tools die je meteen kan gebruiken in training en competitie",
-  "Meetbare vooruitgang – Een gestructureerd traject waarbij we je mentale kracht stap voor stap opbouwen",
-  "Topsportmentaliteit – Leren denken en handelen als de absolute top in jouw discipline",
+  {
+    text: "Individuele begeleiding – Geen standaardadvies, maar mentale strategieën op maat voor jouw sport, uitdagingen en doelen",
+    icon: brickPrimary
+  },
+  {
+    text: "Direct toepasbare technieken – Praktische tools die je meteen kan gebruiken in training en competitie",
+    icon: brickPrimary
+  },
+  {
+    text: "Meetbare vooruitgang – Een gestructureerd traject waarbij we je mentale kracht stap voor stap opbouwen",
+    icon: brickPrimary
+  },
+  {
+    text: "Topsportmentaliteit – Leren denken en handelen als de absolute top in jouw discipline",
+    icon: brickPrimary
+  },
 ]
 
 export default function Expectations() {
@@ -31,8 +44,8 @@ export default function Expectations() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {expectations.map((expectation, index) => (
                 <div key={index} className="flex items-start">
-                  <CheckIcon className="w-6 h-6 text-[#7DF7B5] mr-4 flex-shrink-0 mt-1"/>
-                  <p className="text-[#264038]">{expectation}</p>
+                  <img className="w-5 h-4 text-[#7DF7B5] mr-4 flex-shrink-0 mt-1" src={expectation.icon} alt={"Backsteen"}/>
+                  <p className="text-[#264038]">{expectation.text}</p>
                 </div>
             ))}
           </div>

@@ -15,7 +15,7 @@ type Props = {
   callToAction?: CallToActionResponse;
 }
 
-export default function Hero({title, subtitle, description, callToAction}: Props) {
+export default function Hero({title, subtitle, description, callToAction, videos}: Props) {
   return (
       <section className="py-20 px-4 bg-[#264038] bg-opacity-70 text-white relative">
 
@@ -34,7 +34,7 @@ export default function Hero({title, subtitle, description, callToAction}: Props
               </div>
           )}
         </div>
-      <VideoCarousel videos={[basket, ballet, Boxer, Gym, Cyclist]} />
+      <VideoCarousel videos={videos} />
       </section>
   )
 }

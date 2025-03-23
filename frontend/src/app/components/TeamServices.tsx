@@ -8,17 +8,17 @@ const services = [
   },
   {
     icon: Zap,
-    title: "Veerkrachtige, winnende teamcultuur",
-    description: "Omgaan met tegenslagen en presteren op het hoogste niveau",
+    title: "Opzetten van een veerkrachtige, winnende teamcultuur",
+    description: "Omgaan met tegenslagen en zo constant mogelijk presteren op het hoogste niveau",
   },
   {
     icon: Brain,
-    title: "Systematische mentale training",
+    title: "Implementeren van systematische mentale training",
     description: "Meetbare progressie in focus, motivatie en mentale weerbaarheid",
   },
   {
     icon: Trophy,
-    title: "Toepassing van nieuwste inzichten",
+    title: "Toepassen van de nieuwste inzichten",
     description: "Van neurotraining tot biofeedback en prestatiegerichte mindset-strategieën",
   },
 ]

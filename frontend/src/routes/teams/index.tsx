@@ -5,6 +5,10 @@ import TeamCollaboration from "@/app/components/TeamCollaboration";
 import TeamServices from "@/app/components/TeamServices";
 import {createFileRoute} from "@tanstack/react-router";
 import Hero from "@/components/layout/sections/Hero";
+import team2 from "@/videos/team2.mp4";
+import team3 from "@/videos/team3.mp4";
+import team4 from "@/videos/team4.mp4";
+import team5 from "@/videos/team5.mp4";
 
 export const Route = createFileRoute('/teams/')({
     component: TeamsPage,
@@ -14,15 +18,16 @@ export default function TeamsPage() {
     return (
         <div className="">
             <Hero
-                title={"Maximaliseer teamprestaties met wetenschappelijk onderbouwde sportpsychologie"}
+                title={"Als gediplomeerd sport- en prestatiepsycholoog help ik sportclubs, federaties en teams met wetenschappelijk onderbouwde sportpsychologie"}
                 subtitle={"Mentale kracht is de nieuwe concurrentievoorsprong"}
                 description={" Succesvolle teams begrijpen: techniek, tactiek en fysieke training brengen je ver, maar al te vaak maakt mentale kracht het verschil tussen winnen en verliezen."}
                 callToAction={{url: "/teams", text: "Ontdek onze aanpak"}}
+                videos={[team2, team3, team4, team5]}
             />
+            <TeamBenefits />
             <TeamServices />
             <TeamApproach />
             <TeamCollaboration />
-            <TeamBenefits />
             <CallToAction />
         </div>
     )
