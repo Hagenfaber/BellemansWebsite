@@ -14,8 +14,8 @@ function RouteComponent() {
     <div>
         <Hero
             title={"Word mentaal onverslaanbaar"}
-            subtitle={"Jouw voorsprong start hier"}
-            description={"Jouw lichaam traint elke dag. Maar hoe zit het met je brein?"}
+            subtitle={"Je voorsprong start hier"}
+            description={"Met bewezen strategieën uit de sport- en prestatiepsychologie"}
             callToAction={{url: "/individuals", text: "Neem contact op"}}
         />
         <Services />
