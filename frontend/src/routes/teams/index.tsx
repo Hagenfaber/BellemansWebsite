@@ -1,4 +1,4 @@
-﻿import CallToAction from "@/app/components/CallToAction";
+﻿import CallToAction from "@/app/components/TeamCallToAction";
 import TeamApproach from "@/app/components/TeamApproach";
 import TeamBenefits from "@/app/components/TeamBenefits";
 import TeamCollaboration from "@/app/components/TeamCollaboration";
@@ -21,7 +21,7 @@ export default function TeamsPage() {
                 title={"Als gediplomeerd sport- en prestatiepsycholoog help ik sportclubs, federaties en teams met wetenschappelijk onderbouwde sportpsychologie"}
                 subtitle={"Mentale kracht is de nieuwe concurrentievoorsprong"}
                 description={" Succesvolle teams begrijpen: techniek, tactiek en fysieke training brengen je ver, maar al te vaak maakt mentale kracht het verschil tussen winnen en verliezen."}
-                callToAction={{url: "/teams", text: "Ontdek onze aanpak"}}
+                callToAction={{url: "/contact", text: "Neem contact op"}}
                 videos={[team2, team3, team4, team5]}
             />
             <TeamBenefits />
