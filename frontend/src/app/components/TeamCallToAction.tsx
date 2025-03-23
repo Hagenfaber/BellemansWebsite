@@ -1,4 +1,5 @@
 import { ArrowRightIcon } from "@radix-ui/react-icons";
+import {Link} from "@tanstack/react-router";
 
 export default function CallToAction() {
   return (
@@ -8,10 +9,12 @@ export default function CallToAction() {
         <p className="text-xl mb-12 max-w-3xl mx-auto">
           Neem vandaag nog contact op en ontdek hoe we samen richting een mentaal onverslaanbaar team bouwen.
         </p>
-        <button className="bg-[#7DF7B5] text-[#264038] font-bold py-3 px-8 rounded-full hover:bg-[#fcf2cf] transition duration-300 flex items-center justify-center mx-auto">
-          Neem contact op
-          <ArrowRightIcon className="ml-2" />
-        </button>
+        <div className={"flex justify-center items-center"}>
+          <Link to={"/contact"} className="bg-[#7DF7B5] text-[#264038] font-bold py-3 px-8 rounded-full hover:bg-[#fcf2cf] transition duration-300 flex items-center justify-center mx-auto">
+            Neem contact op
+            <ArrowRightIcon className="ml-2" />
+          </Link>
+        </div>
       </div>
     </section>
   )

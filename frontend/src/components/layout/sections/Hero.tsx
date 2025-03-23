@@ -1,11 +1,6 @@
 import { Award } from "lucide-react"
 import {CallToActionResponse} from "@/endpoints/bellemansSchemas";
 import {Link} from "@tanstack/react-router";
-import basket from "@/videos/Basket.mp4"
-import ballet from "@/videos/Ballet.mp4"
-import Boxer from "@/videos/Boxer.mp4"
-import Gym from "@/videos/Gym.mp4"
-import Cyclist from "@/videos/Cyclist.mp4"
 import VideoCarousel from "@/components/media/VideoCarousel";
 
 type Props = {
