@@ -1,14 +1,14 @@
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 
-const VideoCarousel = ({ videos, speed = 50 }) => {
+const VideoCarousel = ({ videos, speed = 400 }) => {
     const containerRef = useRef<HTMLDivElement | null>(null);
     const motionRef = useRef<HTMLDivElement | null>(null);
 
     useEffect(() => {
         const observer = new IntersectionObserver(
             ([entry]) => {
-                if (!entry.isIntersecting && entry.boundingClientRect.left < 0) {
+                if (entry.boundingClientRect.left < 0) {
                     const newVideoEntry = document.createElement("video");
                     newVideoEntry.src = (entry.target as HTMLVideoElement).src;
                     newVideoEntry.muted = true;

@@ -9,20 +9,20 @@ export default function TeamCollaboration() {
     <section className="py-20 px-4 bg-white">
       <div className="container mx-auto">
         <h2 className="text-3xl font-bold text-center text-[#264038] mb-12">Hoe werkt onze samenwerking?</h2>
-        <div className="space-y-8">
+        <div className="space-y-8 max-w-[100%] sm:max-w-[85%] md:max-w-[60%] flex flex-col items-center mx-auto">
           {collaborationSteps.map((step, index) => (
-            <div key={index} className="flex items-start">
-              <div className="bg-[#7DF7B5] text-[#264038] font-bold rounded-full w-8 h-8 flex items-center justify-center mr-4 flex-shrink-0 mt-1">
+            <div key={index} className="flex items-center">
+              <div className="bg-[#7DF7B5] text-[#264038] font-bold rounded-full w-8 h-8 flex items-center justify-center mr-4 flex-shrink-0">
                 {index + 1}
               </div>
               <p className="text-[#264038] text-lg">{step}</p>
             </div>
           ))}
         </div>
-        <p className="mt-12 text-center text-[#264038] font-semibold">Prijs op aanvraag.</p>
-        <p className="mt-4 text-center text-[#264038] text-xl">
+        <p className="mt-12 text-center text-[#264038] text-xl">
           🏆 Resultaat: een team dat niet alleen fysiek, maar ook mentaal onverslaanbaar wordt.
         </p>
+        <p className="mt-4 text-center text-[#264038] text-xl">Prijs op aanvraag.</p>
       </div>
     </section>
   )

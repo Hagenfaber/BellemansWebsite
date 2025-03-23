@@ -8,17 +8,17 @@ const services = [
   },
   {
     icon: Zap,
-    title: "Veerkrachtige, winnende teamcultuur",
-    description: "Omgaan met tegenslagen en presteren op het hoogste niveau",
+    title: "Opzetten van een veerkrachtige, winnende teamcultuur",
+    description: "Omgaan met tegenslagen en zo constant mogelijk presteren op het hoogste niveau",
   },
   {
     icon: Brain,
-    title: "Systematische mentale training",
+    title: "Implementeren van systematische mentale training",
     description: "Meetbare progressie in focus, motivatie en mentale weerbaarheid",
   },
   {
     icon: Trophy,
-    title: "Toepassing van nieuwste inzichten",
+    title: "Toepassen van de nieuwste inzichten",
     description: "Van neurotraining tot biofeedback en prestatiegerichte mindset-strategieën",
   },
 ]
@@ -32,8 +32,8 @@ export default function TeamServices() {
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {services.map((service, index) => (
-            <div key={index} className="bg-[#E7EFED] p-6 rounded-lg shadow-md">
-              <service.icon className="w-12 h-12 text-[#7DF7B5] mb-4" />
+            <div key={index} className="bg-[#E7EFED] p-6 rounded-lg shadow-md flex flex-col">
+              <service.icon className="w-12 h-12 text-[#7DF7B5] mb-4 self-center" />
               <h3 className="text-xl font-semibold text-[#264038] mb-2">{service.title}</h3>
               <p className="text-[#264038]">{service.description}</p>
             </div>

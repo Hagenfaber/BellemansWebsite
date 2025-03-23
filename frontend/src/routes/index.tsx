@@ -5,6 +5,12 @@ import Approach from "@/app/components/Approach";
 import CallToAction from "@/app/components/CallToAction";
 import Hero from "@/components/layout/sections/Hero";
 
+import basket from "@/videos/Basket.mp4"
+import ballet from "@/videos/Ballet.mp4"
+import Boxer from "@/videos/Boxer.mp4"
+import Gym from "@/videos/Gym.mp4"
+import Cyclist from "@/videos/Cyclist.mp4"
+
 export const Route = createFileRoute('/')({
   component: RouteComponent,
 })
@@ -14,9 +20,10 @@ function RouteComponent() {
     <div>
         <Hero
             title={"Word mentaal onverslaanbaar"}
-            subtitle={"Jouw voorsprong start hier"}
-            description={"Jouw lichaam traint elke dag. Maar hoe zit het met je brein?"}
+            subtitle={"Je voorsprong start hier"}
+            description={"Met bewezen strategieën uit de sport- en prestatiepsychologie"}
             callToAction={{url: "/individuals", text: "Neem contact op"}}
+            videos={[basket, ballet, Boxer, Gym, Cyclist]}
         />
         <Services />
         <Expectations />
