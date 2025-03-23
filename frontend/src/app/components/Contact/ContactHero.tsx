@@ -16,7 +16,7 @@ export default function ContactHero() {
                             <Mail className="h-6 w-6 text-[#264038]" />
                         </div>
                         <h3 className="text-lg font-semibold mb-2">Email</h3>
-                        <p className="text-[#BDC5C3]">info@sportpsycholoog.nl</p>
+                        <a href="mailto:dieter.bellemans@buildyouredge.be" className="text-[#BDC5C3]">dieter.bellemans@buildyouredge.be</a>
                     </div>
 
                     <div className="flex flex-col items-center">
@@ -24,7 +24,7 @@ export default function ContactHero() {
                             <Phone className="h-6 w-6 text-[#264038]" />
                         </div>
                         <h3 className="text-lg font-semibold mb-2">Telefoon</h3>
-                        <p className="text-[#BDC5C3]">+31 6 12345678</p>
+                        <a href="tel:+32494821817" className="text-[#BDC5C3]">+32 494 82 18 17</a>
                     </div>
 
                     <div className="flex flex-col items-center">

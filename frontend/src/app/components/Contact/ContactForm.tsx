@@ -3,10 +3,15 @@
 import type React from "react"
 
 import { Send } from "lucide-react"
-import emailjs from "@emailjs/browser";
+import emailjs, {EmailJSResponseStatus} from "@emailjs/browser";
 import {useForm} from "@tanstack/react-form";
+import {useState} from "react";
 
 export default function ContactForm() {
+    
+    const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+    const [submitSuccess, setSubmitSuccess] = useState<boolean>(false);
+    const [submitError, setSubmitError] = useState<boolean>(false);
     
     const form = useForm({
         defaultValues: {
@@ -16,10 +21,23 @@ export default function ContactForm() {
             message: "",
         },
         onSubmit: async ({ value }) => {
-            await emailjs.send("info_hagenfaber", "bellemans_contact", {
+            setIsSubmitting(true);
+            const response: EmailJSResponseStatus = await emailjs.send("info_hagenfaber", "bellemans_contact", {
                 ...value,
                 time: new Date().formatDateTime(false),
             });
+            
+            console.log(response);
+            
+            if (response.status === 200) {
+                setSubmitSuccess(true);
+                setSubmitError(false);
+            } else {
+                setSubmitSuccess(false);
+                setSubmitError(true);
+            }
+            
+            setIsSubmitting(false);
         }
     })
 
@@ -85,7 +103,7 @@ export default function ContactForm() {
                                                     onChange={(e) => field.handleChange(e.target.value)}
                                                     required
                                                     className="w-full px-4 py-3 border border-[#BDC5C3] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#7DF7B5] focus:border-transparent"
-                                                    placeholder="jouw@email.nl"
+                                                    placeholder="voorbeeld@voorbeeld.be"
                                                 />
                                             </>
                                         )
@@ -93,7 +111,7 @@ export default function ContactForm() {
                             </div>
                         </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div className="grid grid-cols-1 gap-6">
                             <div>
                                 <form.Field
                                     name="phone"
@@ -113,12 +131,12 @@ export default function ContactForm() {
                                                     onBlur={field.handleBlur}
                                                     onChange={(e) => field.handleChange(e.target.value)}
                                                     className="w-full px-4 py-3 border border-[#BDC5C3] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#7DF7B5] focus:border-transparent"
-                                                    placeholder="+31 6 12345678"
+                                                    placeholder="+32 412 34 56 78"
                                                 />
                                             </>
                                         )
                                     }}/>
-                            </div>s
+                            </div>
                         </div>
 
                         <div>
@@ -155,23 +173,25 @@ export default function ContactForm() {
                             </p>
                             <button
                                 type="submit"
+                                disabled={isSubmitting}
                                 className="bg-[#7DF7B5] text-[#264038] font-bold py-3 px-8 rounded-lg hover:bg-[#264038] hover:text-[#7DF7B5] transition duration-300 flex items-center justify-center"
                             >
-                                Verzenden <Send className="ml-2 h-4 w-4" />
+                                {isSubmitting ? "Verzenden..." : <>Verzenden <Send className="ml-2 h-4 w-4" /> </>}
+                                
                             </button>
                         </div>
                         
-                        {/*{submitSuccess && (*/}
-                        {/*    <div className="p-4 bg-green-100 text-green-800 rounded-lg">*/}
-                        {/*        Bedankt voor je bericht! Ik neem zo snel mogelijk contact met je op.*/}
-                        {/*    </div>*/}
-                        {/*)}*/}
+                        {submitSuccess && (
+                            <div className="p-4 bg-green-100 text-green-800 rounded-lg">
+                                Bedankt voor je bericht! Ik neem zo snel mogelijk contact met je op.
+                            </div>
+                        )}
                         
-                        {/*{submitError && (*/}
-                        {/*    <div className="p-4 bg-red-100 text-red-800 rounded-lg">*/}
-                        {/*        Er is iets misgegaan bij het verzenden van je bericht. Probeer het later opnieuw.*/}
-                        {/*    </div>*/}
-                        {/*)}*/}
+                        {submitError && (
+                            <div className="p-4 bg-red-100 text-red-800 rounded-lg">
+                                Er is iets misgegaan bij het verzenden van je bericht. Probeer het later opnieuw.
+                            </div>
+                        )}
                     </form>
                 </div>
             </div>
