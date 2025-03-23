@@ -8,7 +8,7 @@ const VideoCarousel = ({ videos, speed = 400 }) => {
     useEffect(() => {
         const observer = new IntersectionObserver(
             ([entry]) => {
-                if (!entry.isIntersecting && entry.boundingClientRect.left < 0) {
+                if (entry.boundingClientRect.left < 0) {
                     const newVideoEntry = document.createElement("video");
                     newVideoEntry.src = (entry.target as HTMLVideoElement).src;
                     newVideoEntry.muted = true;
