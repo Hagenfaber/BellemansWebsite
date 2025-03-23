@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 
-const VideoCarousel = ({ videos, speed = 50 }) => {
+const VideoCarousel = ({ videos, speed = 400 }) => {
     const containerRef = useRef<HTMLDivElement | null>(null);
     const motionRef = useRef<HTMLDivElement | null>(null);
 
