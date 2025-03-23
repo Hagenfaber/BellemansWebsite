@@ -13,6 +13,7 @@
 import { Route as rootRoute } from './routes/__root'
 import { Route as IndexImport } from './routes/index'
 import { Route as TeamsIndexImport } from './routes/teams/index'
+import { Route as AboutIndexImport } from './routes/about/index'
 import { Route as DynamicPagenameImport } from './routes/dynamic/$pagename'
 
 // Create/Update Routes
@@ -26,6 +27,12 @@ const IndexRoute = IndexImport.update({
 const TeamsIndexRoute = TeamsIndexImport.update({
   id: '/teams/',
   path: '/teams/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const AboutIndexRoute = AboutIndexImport.update({
+  id: '/about/',
+  path: '/about/',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -53,6 +60,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DynamicPagenameImport
       parentRoute: typeof rootRoute
     }
+    '/about/': {
+      id: '/about/'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutIndexImport
+      parentRoute: typeof rootRoute
+    }
     '/teams/': {
       id: '/teams/'
       path: '/teams'
@@ -68,12 +82,14 @@ declare module '@tanstack/react-router' {
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/dynamic/$pagename': typeof DynamicPagenameRoute
+  '/about': typeof AboutIndexRoute
   '/teams': typeof TeamsIndexRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/dynamic/$pagename': typeof DynamicPagenameRoute
+  '/about': typeof AboutIndexRoute
   '/teams': typeof TeamsIndexRoute
 }
 
@@ -81,27 +97,30 @@ export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
   '/dynamic/$pagename': typeof DynamicPagenameRoute
+  '/about/': typeof AboutIndexRoute
   '/teams/': typeof TeamsIndexRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/dynamic/$pagename' | '/teams'
+  fullPaths: '/' | '/dynamic/$pagename' | '/about' | '/teams'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/dynamic/$pagename' | '/teams'
-  id: '__root__' | '/' | '/dynamic/$pagename' | '/teams/'
+  to: '/' | '/dynamic/$pagename' | '/about' | '/teams'
+  id: '__root__' | '/' | '/dynamic/$pagename' | '/about/' | '/teams/'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DynamicPagenameRoute: typeof DynamicPagenameRoute
+  AboutIndexRoute: typeof AboutIndexRoute
   TeamsIndexRoute: typeof TeamsIndexRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DynamicPagenameRoute: DynamicPagenameRoute,
+  AboutIndexRoute: AboutIndexRoute,
   TeamsIndexRoute: TeamsIndexRoute,
 }
 
@@ -117,6 +136,7 @@ export const routeTree = rootRoute
       "children": [
         "/",
         "/dynamic/$pagename",
+        "/about/",
         "/teams/"
       ]
     },
@@ -125,6 +145,9 @@ export const routeTree = rootRoute
     },
     "/dynamic/$pagename": {
       "filePath": "dynamic/$pagename.tsx"
+    },
+    "/about/": {
+      "filePath": "about/index.tsx"
     },
     "/teams/": {
       "filePath": "teams/index.tsx"
