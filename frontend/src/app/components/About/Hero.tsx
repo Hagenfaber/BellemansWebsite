@@ -1,4 +1,4 @@
-import StrongMan from "@/images/about/Run1-edited.jpg";
+import DietyBelly from "@/images/about/Run1-edited.jpg";
 
 export default function AboutHero() {
     return (
@@ -6,7 +6,7 @@ export default function AboutHero() {
 
             <div className="container relative mx-auto flex flex-col md:flex-row gap-10 h-full">
                 <div className={"md:flex flex-1 justify-center items-center"}>
-                    <img src={StrongMan} alt={"strong-man"}
+                    <img src={DietyBelly} alt={"dieter-bellemans-al-lopend"}
                          className={"max-h-full shadow-2xl rounded shadow-[#7DF7B5]"}/>
                 </div>
                 <div className={"absolute md:relative bg-[#264038] md:bg-transparent bottom-0 w-full md:flex-3 rounded-b flex justify-center items-center"}>
