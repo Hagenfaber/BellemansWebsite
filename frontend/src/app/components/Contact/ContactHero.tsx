@@ -1,4 +1,4 @@
-import { Mail, Phone, Clock } from "lucide-react"
+import { Mail, Phone, Clock, MapPin } from "lucide-react"
 
 export default function ContactHero() {
     return (
@@ -10,7 +10,7 @@ export default function ContactHero() {
                     contact met je op.
                 </p>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-5xl mx-auto">
                     <div className="flex flex-col items-center">
                         <div className="bg-[#7DF7B5] p-4 rounded-full mb-4">
                             <Mail className="h-6 w-6 text-[#264038]" />
@@ -29,10 +29,21 @@ export default function ContactHero() {
 
                     <div className="flex flex-col items-center">
                         <div className="bg-[#7DF7B5] p-4 rounded-full mb-4">
+                            <MapPin className="h-6 w-6 text-[#264038]" />
+                        </div>
+                        <h3 className="text-lg font-semibold mb-2">Locaties</h3>
+                        <div className="text-[#BDC5C3] text-sm">
+                            <p>Laar 36, <b>Ekeren (Antwerpen)</b></p>
+                            <p>Peperstraat 30, <b>3071 Erps-Kwerps (Vlaams-Brabant)</b></p>
+                        </div>
+                    </div>
+
+                    <div className="flex flex-col items-center">
+                        <div className="bg-[#7DF7B5] p-4 rounded-full mb-4">
                             <Clock className="h-6 w-6 text-[#264038]" />
                         </div>
                         <h3 className="text-lg font-semibold mb-2">Bereikbaar</h3>
-                        <p className="text-[#BDC5C3]">Ma-Vr: 9:00 - 17:00</p>
+                        <p className="text-[#BDC5C3]">Ma-Vr: 9:00 - 20:00</p>
                     </div>
                 </div>
             </div>
