@@ -20,7 +20,7 @@ export const Footer = () => {
                         <NavItem url={"/contact"}>Neem contact op</NavItem>
                         <NavItem url={"/about"}>Over</NavItem>
                     </nav>
-                    <div className="flex-1 text-sm text-[#BDC5C3]">© 2025 SportPsycholoog. Alle rechten voorbehouden.</div>
+                    <div className="flex-1 text-sm text-[#BDC5C3]">© 2025 Build your edge. Alle rechten voorbehouden.</div>
                 </div>
             </div>
         </footer>
