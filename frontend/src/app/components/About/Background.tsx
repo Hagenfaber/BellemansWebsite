@@ -1,6 +1,10 @@
-import { GraduationCap, Clock, LineChart, Users, Activity } from "lucide-react"
+import { GraduationCap, Clock, LineChart, Users, Activity, User } from "lucide-react"
 
 const backgroundPoints = [
+    {
+        icon: User,
+        text: "Ik ben Dieter Bellemans, gediplomeerd sport- en prestatiepsycholoog werkzaam vanuit twee praktijken – zowel in Ekeren (Antwerpen) als Erps-Kwerps (Vlaams-Brabant)."
+    },
     {
         icon: GraduationCap,
         text: "Master in de Psychologie, opgevolgd met een tweede KULeuven-diploma in praktijkgerichte sportpsychologie.",
