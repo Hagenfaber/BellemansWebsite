@@ -20,6 +20,7 @@ export const Navigation = () => {
               <nav className="hidden md:flex space-x-4">
                   <NavItem url={"/"}>Aanbod individuele atleten</NavItem>
                   <NavItem url={"/teams"}>Aanbod teams en federaties</NavItem>
+                  <NavItem url={"/contact"}>Neem contact op</NavItem>
                   <NavItem url={"/about"}>Over</NavItem>
               </nav>
 
@@ -33,6 +34,7 @@ export const Navigation = () => {
                       <div className={"flex flex-col"}>
                           <NavItem onClick={() => setNavOpen(false)} url={"/"}>Aanbod individuele atleten</NavItem>
                           <NavItem onClick={() => setNavOpen(false)} url={"/teams"}>Aanbod teams en federaties</NavItem>
+                          <NavItem onClick={() => setNavOpen(false)} url={"/contact"}>Neem contact op</NavItem>
                           <NavItem onClick={() => setNavOpen(false)} url={"/about"}>Over</NavItem>
                       </div>
                   </SheetContent>
