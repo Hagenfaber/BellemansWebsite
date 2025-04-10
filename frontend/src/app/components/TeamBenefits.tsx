@@ -5,18 +5,21 @@ const benefits = [
     icon: BarChart,
     title: "Verbeterde prestaties",
     description:
-      "Clubs die mentale training implementeren, presteren tot 30% beter onder druk (Journal of Applied Sport Psychology)",
+      "Clubs die mentale training implementeren, presteren tot 30% beter onder druk",
+    source: "(Journal of Applied Sport Psychology)"
   },
   {
     icon: RefreshCcw,
     title: "Sneller herstel",
-    description: "Mentale veerkracht verlaagt blessures en versnelt herstel (Frontiers in Psychology, 2023)",
+    description: "Mentale veerkracht verlaagt blessures en versnelt herstel",
+    source: "(Frontiers in Psychology, 2023)"
   },
   {
     icon: Trophy,
     title: "Hogere win-ratio",
     description:
-      "Teams met sterke mentale programma's hebben een hogere win-ratio en stabielere prestaties (Gebaseerd op analyses bij eliteclubs in de NBA, Premier League en Olympische teams)",
+      "Teams met sterke mentale programma's hebben een hogere win-ratio en stabielere prestaties",
+    source: "(Gebaseerd op analyses bij eliteclubs in de NBA, Premier League en Olympische teams)"
   },
 ]
 
@@ -31,8 +34,9 @@ export default function TeamBenefits() {
           {benefits.map((benefit, index) => (
             <div key={index} className="bg-white p-6 rounded-lg shadow-md flex flex-col">
               <benefit.icon className="w-12 h-12 text-[#7DF7B5] mb-4 self-center" />
-              <h3 className="text-xl font-semibold text-[#264038] mb-2">{benefit.title}</h3>
+              <h3 className="text-xl font-semibold text-[#264038] mb-2 text-center">{benefit.title}</h3>
               <p className="text-[#264038]">{benefit.description}</p>
+              <p className="text-gray-400 text-sm pt-1">{benefit.source}</p>
             </div>
           ))}
         </div>
