@@ -17,9 +17,10 @@ export const Footer = () => {
                     <nav className="flex-2 flex justify-center space-x-4 mb-4 md:mb-0">
                         <NavItem url={"/"}>Aanbod individuele atleten</NavItem>
                         <NavItem url={"/teams"}>Aanbod teams en federaties</NavItem>
+                        <NavItem url={"/contact"}>Neem contact op</NavItem>
                         <NavItem url={"/about"}>Over</NavItem>
                     </nav>
-                    <div className="flex-1 text-sm text-[#BDC5C3]">© 2025 SportPsycholoog. Alle rechten voorbehouden.</div>
+                    <div className="flex-1 text-sm text-[#BDC5C3]">© 2025 Sportpsychologie in Antwerpen en Vlaams-Brabant. Alle rechten voorbehouden.</div>
                 </div>
             </div>
         </footer>

@@ -18,16 +18,15 @@ export default function TeamsPage() {
     return (
         <div className="">
             <Hero
-                title={"Als gediplomeerd sport- en prestatiepsycholoog help ik sportclubs, federaties en teams met wetenschappelijk onderbouwde sportpsychologie"}
-                subtitle={"Mentale kracht is de nieuwe concurrentievoorsprong"}
-                description={" Succesvolle teams begrijpen: techniek, tactiek en fysieke training brengen je ver, maar al te vaak maakt mentale kracht het verschil tussen winnen en verliezen."}
+                title={"Mentale kracht is de nieuwe concurrentievoorsprong"}
+                description={"Succesvolle teams begrijpen: techniek, tactiek en fysieke training brengen je ver. Maar al te vaak maakt mentale kracht en teamcohesie het verschil tussen winnen en verliezen. Ontdek hoe gerichte sportpsychologische begeleiding het verschil kan maken."}
                 callToAction={{url: "/contact", text: "Neem contact op"}}
                 videos={[team2, team3, team4, team5]}
             />
             <TeamBenefits />
             <TeamServices />
-            <TeamApproach />
             <TeamCollaboration />
+            <TeamApproach />
             <CallToAction />
         </div>
     )
