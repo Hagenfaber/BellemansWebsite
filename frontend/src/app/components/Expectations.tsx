@@ -50,11 +50,10 @@ export default function Expectations() {
             ))}
           </div>
           <p className="mt-12 text-center text-[#264038]">
-            Individuele sessies kunnen zowel digitaal als live plaatsvinden, afhankelijk van jouw voorkeur en
-            beschikbaarheid. Dit biedt flexibiliteit, zodat we altijd een oplossing kunnen vinden die past in jouw
-            schema
-            en situatie. Of je nu vanuit huis, op locatie of onderweg sessies wilt volgen, het is allemaal mogelijk. De
-            sessies duren een volledig uur en worden in rekening gebracht tegen 72 EUR.
+            Individuele sessies kunnen zowel digitaal als ter plaatse in de praktijk plaatsvinden - afhankelijk van jouw voorkeur en beschikbaarheid. Dit biedt flexibiliteit, zodat we altijd een oplossing kunnen vinden die past in jouw schema en situatie. Of je nu vanuit huis, hier in de praktijk  of onderweg sessies wenst te houden, het is allemaal mogelijk.
+            
+            De sessies duren een volledig uur en worden in rekening gebracht tegen <b>72 EUR</b>. Gesprekken in de praktijk kunnen zowel in <b>Ekeren (Antwerpen)</b> als in <b>Erps-Kwerps (Vlaams-Brabant)</b>.
+            
           </p>
         </div>
       </div>

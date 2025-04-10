@@ -1,4 +1,3 @@
-import { ArrowRight } from "lucide-react"
 import {Link} from "@tanstack/react-router";
 import {ArrowRightIcon} from "@radix-ui/react-icons";
 
