@@ -21,7 +21,7 @@ function RouteComponent() {
         <Hero
             title={"Word mentaal onverslaanbaar"}
             subtitle={"Je voorsprong start hier"}
-            description={"Met bewezen strategieën uit de sport- en prestatiepsychologie"}
+            description={"Professionele begeleiding op basis van sport- en prestatiepsychologie"}
             callToAction={{url: "/contact", text: "Neem contact op"}}
             videos={[basket, ballet, Boxer, Gym, Cyclist]}
         />
