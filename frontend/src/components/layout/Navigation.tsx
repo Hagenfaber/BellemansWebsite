@@ -1,5 +1,4 @@
 import * as React from "react";
-import { usePagesGetAll } from "@/endpoints/bellemansComponents";
 import {useState} from "react";
 import {Menu, X} from "lucide-react";
 // @ts-ignore
