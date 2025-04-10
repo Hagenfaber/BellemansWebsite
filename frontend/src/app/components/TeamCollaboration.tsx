@@ -1,7 +1,8 @@
 const collaborationSteps = [
-  "Grondige analyse van huidige teamdynamiek & mentale kracht – Ik breng sterktes en groeipunten in kaart met wetenschappelijk gevalideerde methodes.",
-  "Op maat gemaakt prestatieprogramma – Gericht op mentale veerkracht, focus, teamcohesie en wedstrijdmentaliteit.",
-  "Implementatie & doorlopende optimalisatie (continuous improvement) – Mentale training wordt een vast onderdeel van jullie prestatiecultuur.",
+  "Intakegesprek om de noden en behoeftes in kaart te brengen. Ik werk altijd op maat van het team of de federatie. ",
+  "Eventueel een additionele analyse van de huidige teamdynamiek, individuele sterktes en aandachtspunten & mentale kracht. Sterktes en groeipunten worden in kaart gebracht met wetenschappelijk gevalideerde methodes. De groeipunten worden omgezet naar een concreet stappenplan zodat we ze gericht kunnen aanpakken.",
+  "Continue begeleiding doorheen het seizoen, gefocust op de wensen/noden van het team of de federatie. Hierbij werk ik met op maat gemaakte prestatieprogramma’s om vooruitgang ook meetbaar te maken.",
+  "Implementatie & opzetten van een cultuur van doorlopende optimalisatie (continuous improvement) – aandacht voor mentale training wordt een vast onderdeel van de prestatiecultuur, ook wanneer de sportpsychologische begeleiding verdwijnt."
 ]
 
 export default function TeamCollaboration() {

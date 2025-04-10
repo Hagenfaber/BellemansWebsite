@@ -28,7 +28,7 @@ export default function TeamServices() {
     <section className="py-20 px-4 bg-white">
       <div className="container mx-auto">
         <h2 className="text-3xl font-bold text-center text-[#264038] mb-12">
-          Als gecertificeerd sportpsycholoog help ik sportclubs, federaties en teams om:
+          Als gecertificeerd sportpsycholoog help ik sportclubs, federaties en teams met:
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {services.map((service, index) => (

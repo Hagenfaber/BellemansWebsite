@@ -25,8 +25,8 @@ export default function TeamsPage() {
             />
             <TeamBenefits />
             <TeamServices />
-            <TeamApproach />
             <TeamCollaboration />
+            <TeamApproach />
             <CallToAction />
         </div>
     )
