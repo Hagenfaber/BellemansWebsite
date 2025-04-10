@@ -22,12 +22,10 @@ export default function ContactForm() {
         },
         onSubmit: async ({ value }) => {
             setIsSubmitting(true);
-            const response: EmailJSResponseStatus = await emailjs.send("info_hagenfaber", "bellemans_contact", {
+            const response: EmailJSResponseStatus = await emailjs.send("BellemansD", "bellemans_contact", {
                 ...value,
                 time: new Date().formatDateTime(false),
             });
-            
-            console.log(response);
             
             if (response.status === 200) {
                 setSubmitSuccess(true);
