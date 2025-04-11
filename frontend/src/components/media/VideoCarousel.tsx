@@ -6,7 +6,7 @@ interface VideoCarouselProps {
     speed?: number;
 }
 
-const VideoCarousel: React.FC<VideoCarouselProps> = ({ videos, speed = 20 }) => {
+const VideoCarousel: React.FC<VideoCarouselProps> = ({ videos, speed = 2 }) => {
     const containerRef = useRef<HTMLDivElement>(null);
     const [containerWidth, setContainerWidth] = useState<number>(0);
     const [contentWidth, setContentWidth] = useState<number>(0);
