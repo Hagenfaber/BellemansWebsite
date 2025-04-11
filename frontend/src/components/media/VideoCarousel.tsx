@@ -1,59 +1,107 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 
-const VideoCarousel = ({ videos, speed = 400 }) => {
-    const containerRef = useRef<HTMLDivElement | null>(null);
-    const motionRef = useRef<HTMLDivElement | null>(null);
+interface VideoCarouselProps {
+    videos: string[];
+    speed?: number;
+}
 
+const VideoCarousel: React.FC<VideoCarouselProps> = ({ videos, speed = 2 }) => {
+    const containerRef = useRef<HTMLDivElement>(null);
+    const [containerWidth, setContainerWidth] = useState<number>(0);
+    const [contentWidth, setContentWidth] = useState<number>(0);
+
+    // Calculate the total content width when videos are loaded
     useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.boundingClientRect.left < 0) {
-                    const newVideoEntry = document.createElement("video");
-                    newVideoEntry.src = (entry.target as HTMLVideoElement).src;
-                    newVideoEntry.muted = true;
-                    newVideoEntry.autoplay = true;
-                    newVideoEntry.loop = true;
-                    newVideoEntry.id = "video-" + window.crypto.randomUUID();
-                    newVideoEntry.className = "h-full";
-                    observer.observe(newVideoEntry);
-                    motionRef.current?.appendChild(newVideoEntry);
-                    observer.unobserve(entry.target);
-                }
-            },
-            { threshold: 0 }
-        );
+        if (!containerRef.current) return;
 
-        // @ts-ignore
-        const videoEls = containerRef.current?.querySelectorAll("video");
-        videoEls?.forEach((video) => observer.observe(video));
+        const updateWidths = () => {
+            if (!containerRef.current) return;
 
-        return () => observer.disconnect();
+            // Get the container width
+            const containerWidth = containerRef.current.offsetWidth;
+            setContainerWidth(containerWidth);
+
+            // Estimate the content width based on videos (assuming 16:9 aspect ratio)
+            // In a real app, you'd want to measure the actual rendered videos
+            const videoElements = containerRef.current.querySelectorAll("video");
+            let totalWidth = 0;
+
+            videoElements.forEach((video) => {
+                totalWidth += video.offsetWidth;
+            });
+
+            setContentWidth(totalWidth);
+        };
+
+        // Update on load and resize
+        updateWidths();
+        window.addEventListener("resize", updateWidths);
+
+        // First update might not get accurate sizes if videos aren't loaded yet
+        // So we add another check after a short delay
+        const timer = setTimeout(updateWidths, 1000);
+
+        return () => {
+            window.removeEventListener("resize", updateWidths);
+            clearTimeout(timer);
+        };
     }, [videos]);
 
+    // Calculate the animation duration based on content width
+    const duration = contentWidth > 0 ? (contentWidth / 100) * speed : speed;
+
+    // Ensure container takes full height
+    useEffect(() => {
+        if (containerRef.current) {
+            containerRef.current.style.height = "100%";
+        }
+    }, []);
+
     return (
-        <div ref={containerRef} className="absolute top-0 left-0 overflow-hidden flex w-full h-full -z-10">
-            <motion.div
-                ref={motionRef}
-                className="flex h-full"
-                initial={{ x: 0 }}
-                animate={{ x: "-1000%" }}
-                transition={{ ease: "linear", duration: speed, repeat: Infinity }}
-            >
-                <>
+        <div
+            ref={containerRef}
+            className="absolute top-0 left-0 overflow-hidden w-full h-full -z-10"
+        >
+            {videos.length > 0 && (
+                <motion.div
+                    className="flex h-full"
+                    initial={{ x: 0 }}
+                    animate={{ x: contentWidth > containerWidth ? -contentWidth : 0 }}
+                    transition={{
+                        ease: "linear",
+                        duration: duration,
+                        repeat: Infinity,
+                        repeatType: "loop"
+                    }}
+                >
+                    {/* Original videos */}
                     {videos.map((video, index) => (
                         <video
-                            key={index}
+                            key={`original-${index}`}
                             src={video}
                             muted
                             autoPlay
                             loop
-                            className="h-full w-auto max-w-[2000px]"
-                            id={`video-${window.crypto.randomUUID()}`}
+                            playsInline
+                            className="h-full w-auto object-cover"
                         />
                     ))}
-                </>
-            </motion.div>
+
+                    {/* Duplicated videos to ensure smooth looping */}
+                    {contentWidth > containerWidth && videos.map((video, index) => (
+                        <video
+                            key={`duplicate-${index}`}
+                            src={video}
+                            muted
+                            autoPlay
+                            loop
+                            playsInline
+                            className="h-full w-auto object-cover"
+                        />
+                    ))}
+                </motion.div>
+            )}
         </div>
     );
 };

@@ -9,19 +9,18 @@ export default function AboutHero() {
                     <img src={DietyBelly} alt={"dieter-bellemans-al-lopend"}
                          className={"max-h-full shadow-2xl rounded shadow-[#7DF7B5]"}/>
                 </div>
-                <div className={"absolute md:relative bg-[#264038] md:bg-transparent bottom-0 w-full md:flex-3 rounded-b flex justify-center items-center"}>
-                    <div className={"absolute md:hidden w-full h-20 -top-20 bg-linear-[25deg,red_5%,yellow_60%,lime_90%,teal]"}></div>
-                    <div className={"p-6"}>
-                        <h1 className="text-4xl md:text-6xl font-bold text-[#7DF7B5] mb-8">Dieter Bellemans, sport- en prestatiepsycholoog</h1>
+                <div className={"relative md:bg-transparent w-full md:flex-3 rounded-b flex justify-center items-center"}>
+                    <div className={""}>
+                        <h1 className="text-2xl md:text-6xl font-bold text-[#7DF7B5] mb-8">Dieter Bellemans, sport- en prestatiepsycholoog</h1>
                         <div className="mx-0 md:mx-auto text-left">
-                            <p className="text-xl mb-6">
+                            <p className="text-lg md:text-xl mb-6">
                                 In de topsport telt elk detail.
                                 Je traint je lichaam tot in de perfectie,
                                 verfijnt je techniek en optimaliseert je voeding.
                                 Maar hoe vaak train je de belangrijkste wapens dat je hebt:
                                 je mentale kracht en de manier waarop je denkt en handelt?
                             </p>
-                            <p className="text-xl">
+                            <p className="text-lg md:text-xl">
                                 Als sportpsycholoog ben ik gepassioneerd om atleten,
                                 teams en coaches te helpen om mentaal sterker te worden en te
                                 presteren onder druk. Hierbij hanteer ik uitsluitend wetenschappelijk
