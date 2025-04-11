@@ -8,6 +8,7 @@ type Props = {
   subtitle?: string;
   description?: string;
   callToAction?: CallToActionResponse;
+  videos: Blob[];
 }
 
 export default function Hero({title, subtitle, description, callToAction, videos}: Props) {
