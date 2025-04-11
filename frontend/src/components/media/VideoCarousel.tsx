@@ -6,7 +6,7 @@ interface VideoCarouselProps {
     speed?: number;
 }
 
-const VideoCarousel: React.FC<VideoCarouselProps> = ({ videos, speed = 0.1 }) => {
+const VideoCarousel: React.FC<VideoCarouselProps> = ({ videos, speed = 20 }) => {
     const containerRef = useRef<HTMLDivElement>(null);
     const [containerWidth, setContainerWidth] = useState<number>(0);
     const [contentWidth, setContentWidth] = useState<number>(0);
@@ -51,6 +51,13 @@ const VideoCarousel: React.FC<VideoCarouselProps> = ({ videos, speed = 0.1 }) =>
     // Calculate the animation duration based on content width
     const duration = contentWidth > 0 ? (contentWidth / 100) * speed : speed;
 
+    // Ensure container takes full height
+    useEffect(() => {
+        if (containerRef.current) {
+            containerRef.current.style.height = "100%";
+        }
+    }, []);
+
     return (
         <div
             ref={containerRef}
@@ -77,7 +84,7 @@ const VideoCarousel: React.FC<VideoCarouselProps> = ({ videos, speed = 0.1 }) =>
                             autoPlay
                             loop
                             playsInline
-                            className="h-full w-auto"
+                            className="h-full w-auto object-cover"
                         />
                     ))}
 
@@ -90,7 +97,7 @@ const VideoCarousel: React.FC<VideoCarouselProps> = ({ videos, speed = 0.1 }) =>
                             autoPlay
                             loop
                             playsInline
-                            className="h-full w-auto"
+                            className="h-full w-auto object-cover"
                         />
                     ))}
                 </motion.div>
