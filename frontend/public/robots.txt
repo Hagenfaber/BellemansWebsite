@@ -1,0 +1,11 @@
+# robots.txt file for example.com
+# Last updated: April 14, 2025
+
+User-agent: *
+Allow: /
+Allow: /teams
+Allow: /about
+Allow: /contact
+
+# Sitemap location
+Sitemap: https://buildyouredge.be/sitemap.xml
