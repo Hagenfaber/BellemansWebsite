@@ -14,7 +14,7 @@ export const Footer = () => {
                         </h3>
                         <p className="text-sm text-[#BDC5C3]">Mentale training voor topprestaties</p>
                     </div>
-                    <nav className="flex-2 flex justify-center space-x-4 mb-4 md:mb-0">
+                    <nav className="flex-2 flex flex-col sm:flex-row justify-center items-center space-x-4 mb-4 md:mb-0">
                         <NavItem url={"/"}>Aanbod individuele atleten</NavItem>
                         <NavItem url={"/teams"}>Aanbod teams en federaties</NavItem>
                         <NavItem url={"/contact"}>Neem contact op</NavItem>
