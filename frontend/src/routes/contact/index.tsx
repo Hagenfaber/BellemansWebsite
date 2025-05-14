@@ -19,6 +19,8 @@ export const Route = createFileRoute('/contact/')({
 function RouteComponent() {
   return (
       <div className="">
+          <title>Build your edge - Contact</title>
+
           <ContactHero />
           <ContactForm />
       </div>

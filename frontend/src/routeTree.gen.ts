@@ -13,8 +13,8 @@
 import { Route as rootRoute } from './routes/__root'
 import { Route as IndexImport } from './routes/index'
 import { Route as TeamsIndexImport } from './routes/teams/index'
+import { Route as OverIndexImport } from './routes/over/index'
 import { Route as ContactIndexImport } from './routes/contact/index'
-import { Route as AboutIndexImport } from './routes/about/index'
 import { Route as DynamicPagenameImport } from './routes/dynamic/$pagename'
 
 // Create/Update Routes
@@ -31,15 +31,15 @@ const TeamsIndexRoute = TeamsIndexImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
-const ContactIndexRoute = ContactIndexImport.update({
-  id: '/contact/',
-  path: '/contact/',
+const OverIndexRoute = OverIndexImport.update({
+  id: '/over/',
+  path: '/over/',
   getParentRoute: () => rootRoute,
 } as any)
 
-const AboutIndexRoute = AboutIndexImport.update({
-  id: '/about/',
-  path: '/about/',
+const ContactIndexRoute = ContactIndexImport.update({
+  id: '/contact/',
+  path: '/contact/',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -67,18 +67,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DynamicPagenameImport
       parentRoute: typeof rootRoute
     }
-    '/about/': {
-      id: '/about/'
-      path: '/about'
-      fullPath: '/about'
-      preLoaderRoute: typeof AboutIndexImport
-      parentRoute: typeof rootRoute
-    }
     '/contact/': {
       id: '/contact/'
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactIndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/over/': {
+      id: '/over/'
+      path: '/over'
+      fullPath: '/over'
+      preLoaderRoute: typeof OverIndexImport
       parentRoute: typeof rootRoute
     }
     '/teams/': {
@@ -96,16 +96,16 @@ declare module '@tanstack/react-router' {
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/dynamic/$pagename': typeof DynamicPagenameRoute
-  '/about': typeof AboutIndexRoute
   '/contact': typeof ContactIndexRoute
+  '/over': typeof OverIndexRoute
   '/teams': typeof TeamsIndexRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/dynamic/$pagename': typeof DynamicPagenameRoute
-  '/about': typeof AboutIndexRoute
   '/contact': typeof ContactIndexRoute
+  '/over': typeof OverIndexRoute
   '/teams': typeof TeamsIndexRoute
 }
 
@@ -113,22 +113,22 @@ export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
   '/dynamic/$pagename': typeof DynamicPagenameRoute
-  '/about/': typeof AboutIndexRoute
   '/contact/': typeof ContactIndexRoute
+  '/over/': typeof OverIndexRoute
   '/teams/': typeof TeamsIndexRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/dynamic/$pagename' | '/about' | '/contact' | '/teams'
+  fullPaths: '/' | '/dynamic/$pagename' | '/contact' | '/over' | '/teams'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/dynamic/$pagename' | '/about' | '/contact' | '/teams'
+  to: '/' | '/dynamic/$pagename' | '/contact' | '/over' | '/teams'
   id:
     | '__root__'
     | '/'
     | '/dynamic/$pagename'
-    | '/about/'
     | '/contact/'
+    | '/over/'
     | '/teams/'
   fileRoutesById: FileRoutesById
 }
@@ -136,16 +136,16 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DynamicPagenameRoute: typeof DynamicPagenameRoute
-  AboutIndexRoute: typeof AboutIndexRoute
   ContactIndexRoute: typeof ContactIndexRoute
+  OverIndexRoute: typeof OverIndexRoute
   TeamsIndexRoute: typeof TeamsIndexRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DynamicPagenameRoute: DynamicPagenameRoute,
-  AboutIndexRoute: AboutIndexRoute,
   ContactIndexRoute: ContactIndexRoute,
+  OverIndexRoute: OverIndexRoute,
   TeamsIndexRoute: TeamsIndexRoute,
 }
 
@@ -161,8 +161,8 @@ export const routeTree = rootRoute
       "children": [
         "/",
         "/dynamic/$pagename",
-        "/about/",
         "/contact/",
+        "/over/",
         "/teams/"
       ]
     },
@@ -172,11 +172,11 @@ export const routeTree = rootRoute
     "/dynamic/$pagename": {
       "filePath": "dynamic/$pagename.tsx"
     },
-    "/about/": {
-      "filePath": "about/index.tsx"
-    },
     "/contact/": {
       "filePath": "contact/index.tsx"
+    },
+    "/over/": {
+      "filePath": "over/index.tsx"
     },
     "/teams/": {
       "filePath": "teams/index.tsx"
