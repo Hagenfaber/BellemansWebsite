@@ -18,10 +18,13 @@ export const Route = createFileRoute('/')({
 function RouteComponent() {
   return (
     <div>
+        <title>Build your edge - aanbod Individuele atleten</title>
+        <meta name="keywords" content="Sportpsychologie, Prestatiepsychologie, Individuele atleten, topsport, psychologie, Dieter, Bellemans, Dieter Bellemans, Sportpsycholoog, Prestatiepsycholoog, Mentaal, Faalangst" />
+
         <Hero
             title={"Word mentaal onverslaanbaar"}
             subtitle={"Je voorsprong start hier"}
-            description={"Professionele begeleiding op basis van sport- en prestatiepsychologie"}
+            description={"Professionele begeleiding op basis van sportpsychologie en prestatiepsychologie"}
             callToAction={{url: "/contact", text: "Neem contact op"}}
             videos={[basket, ballet, Boxer, Gym, Cyclist]}
         />

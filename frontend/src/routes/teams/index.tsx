@@ -17,6 +17,8 @@ export const Route = createFileRoute('/teams/')({
 export default function TeamsPage() {
     return (
         <div className="">
+            <title>Build your edge - Teams</title>
+
             <Hero
                 title={"Mentale kracht is de nieuwe concurrentievoorsprong"}
                 description={"Succesvolle teams begrijpen: techniek, tactiek en fysieke training brengen je ver. Maar al te vaak maakt mentale kracht en teamcohesie het verschil tussen winnen en verliezen. Ontdek hoe gerichte sportpsychologische begeleiding het verschil kan maken."}
