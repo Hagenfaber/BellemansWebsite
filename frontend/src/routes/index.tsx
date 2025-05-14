@@ -19,6 +19,8 @@ function RouteComponent() {
   return (
     <div>
         <title>Build your edge - aanbod Individuele atleten</title>
+        <meta name="keywords" content="Sportpsychologie, Prestatiepsychologie, Individuele atleten, topsport, psychologie, Dieter, Bellemans, Dieter Bellemans, Sportpsycholoog, Prestatiepsycholoog, Mentaal, Faalangst" />
+
         <Hero
             title={"Word mentaal onverslaanbaar"}
             subtitle={"Je voorsprong start hier"}
