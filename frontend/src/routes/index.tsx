@@ -5,11 +5,11 @@ import Approach from "@/app/components/Approach";
 import CallToAction from "@/app/components/CallToAction";
 import Hero from "@/components/layout/sections/Hero";
 
-import basket from "@/videos/Basket.mp4"
-import ballet from "@/videos/Ballet.mp4"
-import Boxer from "@/videos/Boxer.mp4"
-import Gym from "@/videos/Gym.mp4"
-import Cyclist from "@/videos/Cyclist.mp4"
+import basket from "@/videos/compressed/Basket.mp4"
+import ballet from "@/videos/compressed/Ballet.mp4"
+import Boxer from "@/videos/compressed/Boxer.mp4"
+import Gym from "@/videos/compressed/Gym.mp4"
+import Cyclist from "@/videos/compressed/Cyclist.mp4"
 
 export const Route = createFileRoute('/')({
   component: RouteComponent,

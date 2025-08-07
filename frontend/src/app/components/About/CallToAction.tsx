@@ -9,8 +9,12 @@ export default function AboutCallToAction() {
                 <p className="text-xl mb-12 max-w-3xl mx-auto">
                     Wil je ontdekken hoe mentale training jou of jouw team kan helpen?
                 </p>
-                <div className={"flex justify-center items-center"}>
-                    <Link to={"/contact"} className="bg-[#7DF7B5] text-[#264038] font-bold py-3 px-8 rounded-full hover:bg-[#fcf2cf] transition duration-300 flex items-center justify-center mx-auto">
+                <div className={"flex justify-center items-center gap-2 flex-col md:flex-row"}>
+                    <Link to={"/wiki"} className="bg-[#7DF7B5] text-[#264038] font-bold py-3 px-8 rounded-full hover:bg-[#fcf2cf] transition duration-300 flex items-center justify-center">
+                        Lees meer
+                        <ArrowRightIcon className="ml-2" />
+                    </Link>
+                    <Link to={"/contact"} className="bg-[#7DF7B5] text-[#264038] font-bold py-3 px-8 rounded-full hover:bg-[#fcf2cf] transition duration-300 flex items-center justify-center">
                         Neem contact op
                         <ArrowRightIcon className="ml-2" />
                     </Link>
