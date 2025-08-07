@@ -1,4 +1,4 @@
-import DietyBelly from "@/images/about/Run1-edited.jpg";
+import DietyBelly from "@/images/about/Run1-edited-min.jpg";
 
 export default function AboutHero() {
     return (
