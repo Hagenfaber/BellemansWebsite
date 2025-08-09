@@ -5,10 +5,10 @@ import TeamCollaboration from "@/app/components/TeamCollaboration";
 import TeamServices from "@/app/components/TeamServices";
 import {createFileRoute} from "@tanstack/react-router";
 import Hero from "@/components/layout/sections/Hero";
-import team2 from "@/videos/team2.mp4";
-import team3 from "@/videos/team3.mp4";
-import team4 from "@/videos/team4.mp4";
-import team5 from "@/videos/team5.mp4";
+import team2 from "@/videos/compressed/team2.mp4";
+import team3 from "@/videos/compressed/team3.mp4";
+import team4 from "@/videos/compressed/team4.mp4";
+import team5 from "@/videos/compressed/team5.mp4";
 
 export const Route = createFileRoute('/teams/')({
     component: TeamsPage,
@@ -17,6 +17,8 @@ export const Route = createFileRoute('/teams/')({
 export default function TeamsPage() {
     return (
         <div className="">
+            <title>Build your edge - Teams</title>
+
             <Hero
                 title={"Mentale kracht is de nieuwe concurrentievoorsprong"}
                 description={"Succesvolle teams begrijpen: techniek, tactiek en fysieke training brengen je ver. Maar al te vaak maakt mentale kracht en teamcohesie het verschil tussen winnen en verliezen. Ontdek hoe gerichte sportpsychologische begeleiding het verschil kan maken."}

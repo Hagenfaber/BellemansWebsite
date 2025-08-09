@@ -1,4 +1,4 @@
-import RunningLadies from "@/images/runningladies.jpg";
+import RunningLadies from "@/images/runningladies-min.jpg";
 
 const collaborationSteps = [
   "Intakegesprek om de noden en behoeftes in kaart te brengen. Ik werk altijd op maat van het team of de federatie. ",

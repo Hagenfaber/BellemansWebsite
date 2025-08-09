@@ -20,7 +20,7 @@ export const Navigation = () => {
                   <NavItem url={"/"}>Aanbod individuele atleten</NavItem>
                   <NavItem url={"/teams"}>Aanbod teams en federaties</NavItem>
                   <NavItem url={"/contact"}>Neem contact op</NavItem>
-                  <NavItem url={"/about"}>Over</NavItem>
+                  <NavItem url={"/over"}>Over</NavItem>
               </nav>
 
               <Sheet open={navOpen} onOpenChange={setNavOpen}>
@@ -34,7 +34,7 @@ export const Navigation = () => {
                           <NavItem onClick={() => setNavOpen(false)} url={"/"}>Aanbod individuele atleten</NavItem>
                           <NavItem onClick={() => setNavOpen(false)} url={"/teams"}>Aanbod teams en federaties</NavItem>
                           <NavItem onClick={() => setNavOpen(false)} url={"/contact"}>Neem contact op</NavItem>
-                          <NavItem onClick={() => setNavOpen(false)} url={"/about"}>Over</NavItem>
+                          <NavItem onClick={() => setNavOpen(false)} url={"/over"}>Over</NavItem>
                       </div>
                   </SheetContent>
               </Sheet>

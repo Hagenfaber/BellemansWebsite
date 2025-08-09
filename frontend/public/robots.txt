@@ -4,8 +4,9 @@
 User-agent: *
 Allow: /
 Allow: /teams
-Allow: /about
+Allow: /over
 Allow: /contact
+Allow: /wiki
 
 # Sitemap location
 Sitemap: https://buildyouredge.be/sitemap.xml

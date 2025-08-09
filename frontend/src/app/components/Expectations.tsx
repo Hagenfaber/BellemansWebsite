@@ -4,7 +4,7 @@ import brickPrimary from "@/images/buildyouredge_illustratie_2.png";
 // @ts-ignore
 import Tile from "@/images/block_tile.png";
 // @ts-ignore
-import StrongMan from "@/images/strong_man.jpg";
+import StrongMan from "@/images/strong_man-min.jpg";
 
 const expectations = [
   {

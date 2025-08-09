@@ -12,9 +12,10 @@
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as IndexImport } from './routes/index'
+import { Route as WikiIndexImport } from './routes/wiki/index'
 import { Route as TeamsIndexImport } from './routes/teams/index'
+import { Route as OverIndexImport } from './routes/over/index'
 import { Route as ContactIndexImport } from './routes/contact/index'
-import { Route as AboutIndexImport } from './routes/about/index'
 import { Route as DynamicPagenameImport } from './routes/dynamic/$pagename'
 
 // Create/Update Routes
@@ -25,21 +26,27 @@ const IndexRoute = IndexImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const WikiIndexRoute = WikiIndexImport.update({
+  id: '/wiki/',
+  path: '/wiki/',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const TeamsIndexRoute = TeamsIndexImport.update({
   id: '/teams/',
   path: '/teams/',
   getParentRoute: () => rootRoute,
 } as any)
 
-const ContactIndexRoute = ContactIndexImport.update({
-  id: '/contact/',
-  path: '/contact/',
+const OverIndexRoute = OverIndexImport.update({
+  id: '/over/',
+  path: '/over/',
   getParentRoute: () => rootRoute,
 } as any)
 
-const AboutIndexRoute = AboutIndexImport.update({
-  id: '/about/',
-  path: '/about/',
+const ContactIndexRoute = ContactIndexImport.update({
+  id: '/contact/',
+  path: '/contact/',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -67,13 +74,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DynamicPagenameImport
       parentRoute: typeof rootRoute
     }
-    '/about/': {
-      id: '/about/'
-      path: '/about'
-      fullPath: '/about'
-      preLoaderRoute: typeof AboutIndexImport
-      parentRoute: typeof rootRoute
-    }
     '/contact/': {
       id: '/contact/'
       path: '/contact'
@@ -81,11 +81,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactIndexImport
       parentRoute: typeof rootRoute
     }
+    '/over/': {
+      id: '/over/'
+      path: '/over'
+      fullPath: '/over'
+      preLoaderRoute: typeof OverIndexImport
+      parentRoute: typeof rootRoute
+    }
     '/teams/': {
       id: '/teams/'
       path: '/teams'
       fullPath: '/teams'
       preLoaderRoute: typeof TeamsIndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/wiki/': {
+      id: '/wiki/'
+      path: '/wiki'
+      fullPath: '/wiki'
+      preLoaderRoute: typeof WikiIndexImport
       parentRoute: typeof rootRoute
     }
   }
@@ -96,57 +110,69 @@ declare module '@tanstack/react-router' {
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/dynamic/$pagename': typeof DynamicPagenameRoute
-  '/about': typeof AboutIndexRoute
   '/contact': typeof ContactIndexRoute
+  '/over': typeof OverIndexRoute
   '/teams': typeof TeamsIndexRoute
+  '/wiki': typeof WikiIndexRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/dynamic/$pagename': typeof DynamicPagenameRoute
-  '/about': typeof AboutIndexRoute
   '/contact': typeof ContactIndexRoute
+  '/over': typeof OverIndexRoute
   '/teams': typeof TeamsIndexRoute
+  '/wiki': typeof WikiIndexRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
   '/dynamic/$pagename': typeof DynamicPagenameRoute
-  '/about/': typeof AboutIndexRoute
   '/contact/': typeof ContactIndexRoute
+  '/over/': typeof OverIndexRoute
   '/teams/': typeof TeamsIndexRoute
+  '/wiki/': typeof WikiIndexRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/dynamic/$pagename' | '/about' | '/contact' | '/teams'
+  fullPaths:
+    | '/'
+    | '/dynamic/$pagename'
+    | '/contact'
+    | '/over'
+    | '/teams'
+    | '/wiki'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/dynamic/$pagename' | '/about' | '/contact' | '/teams'
+  to: '/' | '/dynamic/$pagename' | '/contact' | '/over' | '/teams' | '/wiki'
   id:
     | '__root__'
     | '/'
     | '/dynamic/$pagename'
-    | '/about/'
     | '/contact/'
+    | '/over/'
     | '/teams/'
+    | '/wiki/'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DynamicPagenameRoute: typeof DynamicPagenameRoute
-  AboutIndexRoute: typeof AboutIndexRoute
   ContactIndexRoute: typeof ContactIndexRoute
+  OverIndexRoute: typeof OverIndexRoute
   TeamsIndexRoute: typeof TeamsIndexRoute
+  WikiIndexRoute: typeof WikiIndexRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DynamicPagenameRoute: DynamicPagenameRoute,
-  AboutIndexRoute: AboutIndexRoute,
   ContactIndexRoute: ContactIndexRoute,
+  OverIndexRoute: OverIndexRoute,
   TeamsIndexRoute: TeamsIndexRoute,
+  WikiIndexRoute: WikiIndexRoute,
 }
 
 export const routeTree = rootRoute
@@ -161,9 +187,10 @@ export const routeTree = rootRoute
       "children": [
         "/",
         "/dynamic/$pagename",
-        "/about/",
         "/contact/",
-        "/teams/"
+        "/over/",
+        "/teams/",
+        "/wiki/"
       ]
     },
     "/": {
@@ -172,14 +199,17 @@ export const routeTree = rootRoute
     "/dynamic/$pagename": {
       "filePath": "dynamic/$pagename.tsx"
     },
-    "/about/": {
-      "filePath": "about/index.tsx"
-    },
     "/contact/": {
       "filePath": "contact/index.tsx"
     },
+    "/over/": {
+      "filePath": "over/index.tsx"
+    },
     "/teams/": {
       "filePath": "teams/index.tsx"
+    },
+    "/wiki/": {
+      "filePath": "wiki/index.tsx"
     }
   }
 }
