@@ -6,7 +6,7 @@ export default function CallToAction() {
   return (
     <section className="py-20 px-4 bg-[#264038] text-white">
       <div className="container mx-auto text-center">
-        <h2 className="text-3xl font-bold mb-8">Ben je geinteresseerd of heb je vragen over een van de volgende topics?</h2>
+        <h2 className="text-3xl font-bold mb-8">Ben je geïnteresseerd of heb je vragen over een van de volgende topics?</h2>
         <p className="text-xl mb-12 max-w-3xl mx-auto flex">
           <div className={"hidden md:flex flex-1 justify-center items-center"}>
             <img src={AiSwimmer} alt={"AiSwimmer"}
