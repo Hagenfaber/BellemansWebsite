@@ -6,6 +6,7 @@ Allow: /
 Allow: /teams
 Allow: /about
 Allow: /contact
+Allow: /wiki
 
 # Sitemap location
 Sitemap: https://buildyouredge.be/sitemap.xml
