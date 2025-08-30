@@ -14,7 +14,7 @@ export default function VideoCarousel({ videos }: VideoCarouselProps) {
 
         let animationId: number
         let startTime: number | null = null
-        const duration = 10000 // 10 seconds for full loop
+        const duration = 30000 // 10 seconds for full loop
         const totalWidth = carousel.scrollWidth / 2 // Half because we duplicate contetanstack rnt
 
         const animate = (currentTime: number) => {
