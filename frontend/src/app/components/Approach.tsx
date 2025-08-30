@@ -21,7 +21,7 @@ export default function Approach() {
         <div className="space-y-6">
           {approachPoints.map((point, index) => (
             <div key={index} className="flex items-start">
-              <CheckCircle className="w-6 h-6 text-[#7DF7B5] mr-4 flex-shrink-0 mt-1" />
+              <CheckCircle className="w-6 h-6 text-[#7DF7B5] mr-4 shrink-0 mt-1" />
               <p className="text-[#264038]">{point}</p>
             </div>
           ))}

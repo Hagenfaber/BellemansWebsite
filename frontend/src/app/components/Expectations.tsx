@@ -44,7 +44,7 @@ export default function Expectations() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {expectations.map((expectation, index) => (
                 <div key={index} className="flex items-start">
-                  <img className="w-5 h-4 text-[#7DF7B5] mr-4 flex-shrink-0 mt-1" src={expectation.icon} alt={"Backsteen"}/>
+                  <img className="w-5 h-4 text-[#7DF7B5] mr-4 shrink-0 mt-1" src={expectation.icon} alt={"Backsteen"}/>
                   <p className="text-[#264038]">{expectation.text}</p>
                 </div>
             ))}
