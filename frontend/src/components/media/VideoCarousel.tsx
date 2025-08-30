@@ -61,7 +61,7 @@ const VideoCarousel: React.FC<VideoCarouselProps> = ({ videos, speed = 2 }) => {
     return (
         <div
             ref={containerRef}
-            className="absolute top-0 left-0 overflow-hidden w-full h-full -z-10"
+            className="absolute inset-0 overflow-hidden w-full h-full z-0 pointer-events-none"
         >
             {videos.length > 0 && (
                 <motion.div

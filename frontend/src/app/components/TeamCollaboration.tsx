@@ -17,10 +17,10 @@ export default function TeamCollaboration() {
         </div>
         <div className={"md:flex flex-col justify-center items-center md:flex-2"}>
           <h2 className="text-3xl font-bold text-center text-[#264038] mb-12">Hoe werkt onze samenwerking?</h2>
-          <div className="space-y-8 max-w-[100%] sm:max-w-[85%] md:max-w-[60%] flex flex-col items-center mx-auto">
+          <div className="space-y-8 max-w-full sm:max-w-[85%] md:max-w-[60%] flex flex-col items-center mx-auto">
             {collaborationSteps.map((step, index) => (
                 <div key={index} className="flex items-center">
-                  <div className="bg-[#7DF7B5] text-[#264038] font-bold rounded-full w-8 h-8 flex items-center justify-center mr-4 flex-shrink-0">
+                  <div className="bg-[#7DF7B5] text-[#264038] font-bold rounded-full w-8 h-8 flex items-center justify-center mr-4 shrink-0">
                     {index + 1}
                   </div>
                   <p className="text-[#264038] text-lg">{step}</p>

@@ -40,7 +40,7 @@ export default function AboutBackground() {
                     <div className="space-y-6 max-w-3xl mx-auto">
                         {backgroundPoints.map((point, index) => (
                             <div key={index} className="flex items-start">
-                                <div className="bg-[#7DF7B5] rounded-full p-2 mr-4 flex-shrink-0">
+                                <div className="bg-[#7DF7B5] rounded-full p-2 mr-4 shrink-0">
                                     <point.icon className="w-6 h-6 text-[#264038]" />
                                 </div>
                                 <p className="text-[#264038] text-lg">{point.text}</p>
