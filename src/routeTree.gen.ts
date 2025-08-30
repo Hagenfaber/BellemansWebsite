@@ -8,104 +8,44 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
-// Import Routes
+import { Route as rootRouteImport } from './routes/__root'
+import { Route as IndexRouteImport } from './routes/index'
+import { Route as WikiIndexRouteImport } from './routes/wiki/index'
+import { Route as TeamsIndexRouteImport } from './routes/teams/index'
+import { Route as OverIndexRouteImport } from './routes/over/index'
+import { Route as ContactIndexRouteImport } from './routes/contact/index'
+import { Route as DynamicPagenameRouteImport } from './routes/dynamic/$pagename'
 
-import { Route as rootRoute } from './routes/__root'
-import { Route as IndexImport } from './routes/index'
-import { Route as WikiIndexImport } from './routes/wiki/index'
-import { Route as TeamsIndexImport } from './routes/teams/index'
-import { Route as OverIndexImport } from './routes/over/index'
-import { Route as ContactIndexImport } from './routes/contact/index'
-import { Route as DynamicPagenameImport } from './routes/dynamic/$pagename'
-
-// Create/Update Routes
-
-const IndexRoute = IndexImport.update({
+const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRouteImport,
 } as any)
-
-const WikiIndexRoute = WikiIndexImport.update({
+const WikiIndexRoute = WikiIndexRouteImport.update({
   id: '/wiki/',
   path: '/wiki/',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRouteImport,
 } as any)
-
-const TeamsIndexRoute = TeamsIndexImport.update({
+const TeamsIndexRoute = TeamsIndexRouteImport.update({
   id: '/teams/',
   path: '/teams/',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRouteImport,
 } as any)
-
-const OverIndexRoute = OverIndexImport.update({
+const OverIndexRoute = OverIndexRouteImport.update({
   id: '/over/',
   path: '/over/',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRouteImport,
 } as any)
-
-const ContactIndexRoute = ContactIndexImport.update({
+const ContactIndexRoute = ContactIndexRouteImport.update({
   id: '/contact/',
   path: '/contact/',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRouteImport,
 } as any)
-
-const DynamicPagenameRoute = DynamicPagenameImport.update({
+const DynamicPagenameRoute = DynamicPagenameRouteImport.update({
   id: '/dynamic/$pagename',
   path: '/dynamic/$pagename',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRouteImport,
 } as any)
-
-// Populate the FileRoutesByPath interface
-
-declare module '@tanstack/react-router' {
-  interface FileRoutesByPath {
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexImport
-      parentRoute: typeof rootRoute
-    }
-    '/dynamic/$pagename': {
-      id: '/dynamic/$pagename'
-      path: '/dynamic/$pagename'
-      fullPath: '/dynamic/$pagename'
-      preLoaderRoute: typeof DynamicPagenameImport
-      parentRoute: typeof rootRoute
-    }
-    '/contact/': {
-      id: '/contact/'
-      path: '/contact'
-      fullPath: '/contact'
-      preLoaderRoute: typeof ContactIndexImport
-      parentRoute: typeof rootRoute
-    }
-    '/over/': {
-      id: '/over/'
-      path: '/over'
-      fullPath: '/over'
-      preLoaderRoute: typeof OverIndexImport
-      parentRoute: typeof rootRoute
-    }
-    '/teams/': {
-      id: '/teams/'
-      path: '/teams'
-      fullPath: '/teams'
-      preLoaderRoute: typeof TeamsIndexImport
-      parentRoute: typeof rootRoute
-    }
-    '/wiki/': {
-      id: '/wiki/'
-      path: '/wiki'
-      fullPath: '/wiki'
-      preLoaderRoute: typeof WikiIndexImport
-      parentRoute: typeof rootRoute
-    }
-  }
-}
-
-// Create and export the route tree
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -115,7 +55,6 @@ export interface FileRoutesByFullPath {
   '/teams': typeof TeamsIndexRoute
   '/wiki': typeof WikiIndexRoute
 }
-
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/dynamic/$pagename': typeof DynamicPagenameRoute
@@ -124,9 +63,8 @@ export interface FileRoutesByTo {
   '/teams': typeof TeamsIndexRoute
   '/wiki': typeof WikiIndexRoute
 }
-
 export interface FileRoutesById {
-  __root__: typeof rootRoute
+  __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/dynamic/$pagename': typeof DynamicPagenameRoute
   '/contact/': typeof ContactIndexRoute
@@ -134,7 +72,6 @@ export interface FileRoutesById {
   '/teams/': typeof TeamsIndexRoute
   '/wiki/': typeof WikiIndexRoute
 }
-
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
@@ -156,7 +93,6 @@ export interface FileRouteTypes {
     | '/wiki/'
   fileRoutesById: FileRoutesById
 }
-
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DynamicPagenameRoute: typeof DynamicPagenameRoute
@@ -164,6 +100,53 @@ export interface RootRouteChildren {
   OverIndexRoute: typeof OverIndexRoute
   TeamsIndexRoute: typeof TeamsIndexRoute
   WikiIndexRoute: typeof WikiIndexRoute
+}
+
+declare module '@tanstack/react-router' {
+  interface FileRoutesByPath {
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/wiki/': {
+      id: '/wiki/'
+      path: '/wiki'
+      fullPath: '/wiki'
+      preLoaderRoute: typeof WikiIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/teams/': {
+      id: '/teams/'
+      path: '/teams'
+      fullPath: '/teams'
+      preLoaderRoute: typeof TeamsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/over/': {
+      id: '/over/'
+      path: '/over'
+      fullPath: '/over'
+      preLoaderRoute: typeof OverIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact/': {
+      id: '/contact/'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dynamic/$pagename': {
+      id: '/dynamic/$pagename'
+      path: '/dynamic/$pagename'
+      fullPath: '/dynamic/$pagename'
+      preLoaderRoute: typeof DynamicPagenameRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+  }
 }
 
 const rootRouteChildren: RootRouteChildren = {
@@ -174,43 +157,6 @@ const rootRouteChildren: RootRouteChildren = {
   TeamsIndexRoute: TeamsIndexRoute,
   WikiIndexRoute: WikiIndexRoute,
 }
-
-export const routeTree = rootRoute
+export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-/* ROUTE_MANIFEST_START
-{
-  "routes": {
-    "__root__": {
-      "filePath": "__root.tsx",
-      "children": [
-        "/",
-        "/dynamic/$pagename",
-        "/contact/",
-        "/over/",
-        "/teams/",
-        "/wiki/"
-      ]
-    },
-    "/": {
-      "filePath": "index.tsx"
-    },
-    "/dynamic/$pagename": {
-      "filePath": "dynamic/$pagename.tsx"
-    },
-    "/contact/": {
-      "filePath": "contact/index.tsx"
-    },
-    "/over/": {
-      "filePath": "over/index.tsx"
-    },
-    "/teams/": {
-      "filePath": "teams/index.tsx"
-    },
-    "/wiki/": {
-      "filePath": "wiki/index.tsx"
-    }
-  }
-}
-ROUTE_MANIFEST_END */

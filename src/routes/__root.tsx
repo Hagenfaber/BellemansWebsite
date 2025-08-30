@@ -29,7 +29,7 @@ export const Route = createRootRoute({
             },
         ],
         links: [
-            { rel: "icon", type: "image/x-icon", href: "/public/logo.ico"},
+            { rel: "icon", type: "image/x-icon", href: "/logo.ico"},
             { rel: 'stylesheet', href: rootCss }
         ],
     }),
