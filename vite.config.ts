@@ -1,6 +1,6 @@
 import path from 'node:path'
 import url from 'node:url'
-import { TanStackRouterVite } from '@tanstack/router-plugin/vite'
+import { tanStackRouterCodeSplitter } from '@tanstack/router-plugin/vite'
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import type { BuildEnvironmentOptions } from 'vite'
@@ -46,7 +46,7 @@ const clientBuildConfig: BuildEnvironmentOptions = {
 export default defineConfig((configEnv) => {
     return {
         plugins: [
-            TanStackRouterVite({ target: 'react', autoCodeSplitting: true }),
+            tanStackRouterCodeSplitter({ target: 'react', autoCodeSplitting: true }),
             react(),
             tailwindcss(),
         ],

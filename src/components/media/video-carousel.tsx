@@ -8,7 +8,6 @@ export default function VideoCarousel({ videos }: VideoCarouselProps) {
     const carouselRef = useRef<HTMLDivElement>(null)
 
     useEffect(() => {
-        console.log("here");
         const carousel = carouselRef.current
         if (!carousel) return
 
