@@ -31,11 +31,45 @@ export const Route = createRootRoute({
                 name: "google-site-verification",
                 content: "LPJ618HqVuov6cusBLXzYkK2HcZk8Hh8GRsgUKh8cB0"
             },
+            {
+                property: "og:type",
+                content: "website",
+            },
+            {
+                property: "og:title",
+                content: "Build your edge",
+            },
+            {
+                property: "og:description",
+                content: "Professionele begeleiding op basis van sportpsychologie en prestatiepsychologie",
+            },
+            {
+                property: "og:url",
+                content: "https://www.YOUR_DOMAIN.tld/",
+            },
+            {
+                property: "og:image",
+                content: "https://www.YOUR_DOMAIN.tld/og-image.jpg",
+            },
+            {
+                property: "og:image:alt",
+                content: "Build your edge — Sport- en prestatiepsychologie",
+            },
+            {
+                property: "og:site_name",
+                content: "Build your edge",
+            },
+            {
+                property: "og:locale",
+                content: "nl_NL",
+            },
         ],
         links: [
             { rel: "preload", href: rootCss, as: "style"},
             { rel: "icon", type: "image/x-icon", href: "/logo.ico"},
-            { rel: 'stylesheet', href: rootCss }
+            { rel: 'stylesheet', href: rootCss },
+            { rel: "canonical", href: "https://buildyouredge.be/" }
+
         ],
     }),
     scripts: () => [
