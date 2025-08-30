@@ -45,11 +45,11 @@ export const Route = createRootRoute({
             },
             {
                 property: "og:url",
-                content: "https://www.YOUR_DOMAIN.tld/",
+                content: "https://buildyouredge.be/",
             },
             {
                 property: "og:image",
-                content: "https://www.YOUR_DOMAIN.tld/og-image.jpg",
+                content: "https://buildyouredge.be/logo.ico",
             },
             {
                 property: "og:image:alt",
