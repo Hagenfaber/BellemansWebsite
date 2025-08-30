@@ -45,6 +45,12 @@ export const Route = createRootRoute({
             async: true,
             src: "https://www.googletagmanager.com/gtag/js?id=G-TVTF4SWG7Y"
         },
+        {
+            type: 'module',
+            src: import.meta.env.PROD
+                ? '/static/entry-client.js'
+                : '/src/entry-client.tsx',
+        },
     ],
   component: RootComponent,
 })
