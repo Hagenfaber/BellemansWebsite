@@ -5,10 +5,15 @@ import Approach from "@/app/components/Approach";
 import CallToAction from "@/app/components/CallToAction";
 import Hero from "@/components/layout/sections/Hero";
 
+// @ts-ignore
 import basket from "@/videos/compressed/Basket.mp4"
+// @ts-ignore
 import ballet from "@/videos/compressed/Ballet.mp4"
+// @ts-ignore
 import Boxer from "@/videos/compressed/Boxer.mp4"
+// @ts-ignore
 import Gym from "@/videos/compressed/Gym.mp4"
+// @ts-ignore
 import Cyclist from "@/videos/compressed/Cyclist.mp4"
 
 export const Route = createFileRoute('/')({

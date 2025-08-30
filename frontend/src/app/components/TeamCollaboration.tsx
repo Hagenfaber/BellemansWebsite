@@ -1,3 +1,4 @@
+// @ts-ignore
 import RunningLadies from "@/images/runningladies-min.jpg";
 
 const collaborationSteps = [

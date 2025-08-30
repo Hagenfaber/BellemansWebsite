@@ -1,4 +1,5 @@
 import { GraduationCap, Clock, LineChart, Users, Activity, User } from "lucide-react"
+// @ts-ignore
 import bike from "@/images/about/Bike3-min.jpg";
 
 const backgroundPoints = [

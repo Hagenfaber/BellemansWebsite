@@ -1,8 +1,7 @@
 import { Award } from "lucide-react"
 import {CallToActionResponse} from "@/endpoints/bellemansSchemas";
-import {ClientOnly, Link} from "@tanstack/react-router";
+import {Link} from "@tanstack/react-router";
 import VideoCarousel from "@/components/media/video-carousel";
-import {useMemo} from "react";
 
 type Props = {
   title?: string;
@@ -14,18 +13,10 @@ type Props = {
 
 export default function Hero({title, subtitle, description, callToAction, videos}: Props) {
 
-    const videoItems = useMemo(() => {
-        return videos.map((v, index) => (
-            <video key={index} className="h-full w-auto object-cover" autoPlay muted loop playsInline>
-                <source src={v} type="video/mp4" />
-            </video>
-        ))
-    }, [videos])
-
   return (
       <section className="relative py-20 px-4 text-white">
         {/* Background video */}
-        <VideoCarousel videos={videoItems} />
+        <VideoCarousel videos={videos} />
         {/* Color overlay */}
         <div className="absolute inset-0 bg-[#264038]/70 z-10" aria-hidden />
 

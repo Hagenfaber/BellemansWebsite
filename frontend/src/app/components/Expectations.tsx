@@ -1,4 +1,4 @@
-import { CheckIcon } from "@radix-ui/react-icons";
+// @ts-ignore
 import brickPrimary from "@/images/buildyouredge_illustratie_2.png";
 
 // @ts-ignore

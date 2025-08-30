@@ -47,6 +47,7 @@ export const Route = createRootRoute({
         },
         {
             type: 'module',
+            // @ts-ignore
             src: import.meta.env.PROD
                 ? '/static/entry-client.js'
                 : '/src/entry-client.tsx',

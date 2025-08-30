@@ -1,6 +1,5 @@
 import { ArrowRightIcon } from "@radix-ui/react-icons";
 import {Link} from "@tanstack/react-router";
-import AiSwimmer from "@/images/AiSwimmer-min.png";
 
 export default function CallToAction() {
   return (

@@ -1,7 +1,7 @@
-import {ReactNode, useEffect, useRef} from "react"
+import {useEffect, useRef} from "react"
 
 interface VideoCarouselProps {
-    videos: ReactNode[]
+    videos: string[]
 }
 
 export default function VideoCarousel({ videos }: VideoCarouselProps) {
@@ -40,14 +40,18 @@ export default function VideoCarousel({ videos }: VideoCarouselProps) {
         <div className="absolute inset-0 overflow-hidden w-full h-full z-0 pointer-events-none">
             <div ref={carouselRef} className={"flex h-full"}>
                 {/* First set of videos */}
-                {videos.map((video) => video)}
+                {videos.map((video, index) => (
+                    <video key={index} className="h-full w-auto object-cover" autoPlay muted loop playsInline>
+                        <source src={video} type="video/mp4" />
+                    </video>
+                ))}
 
                 {/*/!* Duplicate set for seamless looping *!/*/}
-                {/*{videos.map((src, index) => (*/}
-                {/*    <video key={`duplicate-${index}`} className="h-full w-auto object-cover" autoPlay muted loop playsInline>*/}
-                {/*        <source src={src} type="video/mp4" />*/}
-                {/*    </video>*/}
-                {/*))}*/}
+                {videos.map((src, index) => (
+                    <video key={`duplicate-${index}`} className="h-full w-auto object-cover" autoPlay muted loop playsInline>
+                        <source src={src} type="video/mp4" />
+                    </video>
+                ))}
             </div>
         </div>
     )
