@@ -8,10 +8,6 @@ export default function CallToAction() {
       <div className="container mx-auto text-center">
         <h2 className="text-3xl font-bold mb-8">Ben je geïnteresseerd of heb je vragen over een van de volgende topics?</h2>
         <p className="text-xl mb-12 max-w-3xl mx-auto flex">
-          <div className={"hidden md:flex flex-1 justify-center items-center"}>
-            <img src={AiSwimmer} alt={"AiSwimmer"}
-                 className={"max-h-full shadow-2xl rounded shadow-[#7DF7B5]"}/>
-          </div>
           <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-2 w-full pl-6">
             <li className="text-left list-disc">Mentale coaching</li>
             <li className="text-left list-disc">Topsport</li>

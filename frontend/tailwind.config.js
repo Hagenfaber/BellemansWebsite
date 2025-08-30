@@ -1,14 +1,12 @@
-/** @type {import('tailwindcss').Config} */
 import tailwindcssAnimate from "tailwindcss-animate";
-import type { Config } from 'tailwindcss'
+/** @type {import('tailwindcss').Config} */
 
 export default {
-	plugins: [tailwindcssAnimate],
+    plugins: [tailwindcssAnimate],
     darkMode: ["class"],
     content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+        "./src/**/*.{js,ts,jsx,tsx}",
+      ],
   theme: {
   	extend: {
 		  flex: {
@@ -77,5 +75,5 @@ export default {
 		}
   	}
   },
-} satisfies Config
+}
 
