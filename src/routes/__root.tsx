@@ -17,6 +17,10 @@ export const Route = createRootRoute({
                 content: 'UTF-8',
             },
             {
+                name: 'description',
+                content: 'Professionele begeleiding op basis van sportpsychologie en prestatiepsychologie',
+            },
+            {
                 name: "viewport",
                 content: "width=device-width, initial-scale=1.0"
             },
@@ -29,6 +33,7 @@ export const Route = createRootRoute({
             },
         ],
         links: [
+            { rel: "preload", href: rootCss, as: "style"},
             { rel: "icon", type: "image/x-icon", href: "/logo.ico"},
             { rel: 'stylesheet', href: rootCss }
         ],
@@ -45,6 +50,91 @@ export const Route = createRootRoute({
             async: true,
             src: "https://www.googletagmanager.com/gtag/js?id=G-TVTF4SWG7Y"
         },
+        {
+            type: 'application/ld+json',
+            children: JSON.stringify({
+                "@context": "https://schema.org",
+                "@graph": [
+                    {
+                        "@type": "Organization",
+                        "@id": "https://www.buildyouredge.be/",
+                        "name": "Build your edge",
+                        "url": "hhttps://www.buildyouredge.be/",
+                        "logo": "https://www.buildyouredge.be/logo.ico",
+                        "image": "https://www.buildyouredge.be/logo.ico",
+                        "description": "Professionele begeleiding op basis van sportpsychologie en prestatiepsychologie",
+                        "email": "dieter.bellemans@buildyouredge.be",
+                        "sameAs": [
+                            "https://www.instagram.com/buildyouredge_/",
+                            "https://www.linkedin.com/company/build-your-edge/"
+                        ]
+                    },
+                    {
+                        "@type": ["LocalBusiness", "ProfessionalService"],
+                        "@id": "https://www.buildyouredge.be/",
+                        "name": "Build your edge",
+                        "url": "https://www.buildyouredge.be/",
+                        "parentOrganization": { "@id": "https://www.buildyouredge.be/" },
+                        "telephone": "+32 494 82 18 17",
+                        "address": {
+                            "@type": "PostalAddress",
+                            "streetAddress": "Laar 35",
+                            "addressLocality": "Ekeren",
+                            "postalCode": "2010",
+                            "addressRegion": "Fl",
+                            "addressCountry": "BE"
+                        },
+                        "geo": {
+                            "@type": "GeoCoordinates",
+                            "latitude": 51.268962199812805,
+                            "longitude": 4.441939282990199
+                        },
+                        "openingHoursSpecification": [
+                            {
+                                "@type": "OpeningHoursSpecification",
+                                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                                "opens": "09:00",
+                                "closes": "20:00"
+                            }
+                        ],
+                        "hasMap": "https://www.google.com/maps/place/Laar+36,+2180+Antwerpen",
+                        "areaServed": "BE"
+                    },
+                    {
+                        "@type": ["LocalBusiness", "ProfessionalService"],
+                        "@id": "https://www.buildyouredge.be/",
+                        "name": "Build your edge",
+                        "url": "https://www.buildyouredge.be/",
+                        "parentOrganization": { "@id": "https://www.buildyouredge.be/" },
+                        "telephone": "+32 494 82 18 17",
+                        "address": {
+                            "@type": "PostalAddress",
+                            "streetAddress": "Peperstraat 30",
+                            "addressLocality": "Erps-Kwerps",
+                            "postalCode": "3071",
+                            "addressRegion": "FL",
+                            "addressCountry": "BE"
+                        },
+                        "geo": {
+                            "@type": "GeoCoordinates",
+                            "latitude": 50.9044897,
+                            "longitude": 4.5553233
+                        },
+                        "openingHoursSpecification": [
+                            {
+                                "@type": "OpeningHoursSpecification",
+                                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                                "opens": "09:00",
+                                "closes": "20:00"
+                            }
+                        ],
+                        "hasMap": "https://www.google.com/maps/place/Peperstraat+30,+3071+Kortenberg",
+                        "areaServed": "BE"
+                    },
+                ]
+            })
+        },
+
         {
             type: 'module',
             // @ts-ignore
