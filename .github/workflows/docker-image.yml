@@ -54,4 +54,4 @@ jobs:
 
       - name: Trigger Portainer Webhook
         run: |
-          curl -X POST "https://portainer.hagenfaber.eu/api/stacks/webhooks/eabeaca1-dadd-4c7e-abbf-4d4b17f5088a"
+          curl -X POST "https://portainer.hagenfaber.eu/api/stacks/webhooks/38206d9d-00a7-4a9b-a09e-3607e6ce54ab"

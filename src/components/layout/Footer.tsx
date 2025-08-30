@@ -1,7 +1,5 @@
-import * as React from "react";
 import {Logo} from "@/components/Icons/Logo";
 import {NavItem} from "@/components/layout/NavItem";
-
 
 export const Footer = () => {
     return (
@@ -18,7 +16,7 @@ export const Footer = () => {
                         <NavItem url={"/"}>Aanbod individuele atleten</NavItem>
                         <NavItem url={"/teams"}>Aanbod teams en federaties</NavItem>
                         <NavItem url={"/contact"}>Neem contact op</NavItem>
-                        <NavItem url={"/about"}>Over</NavItem>
+                        <NavItem url={"/over"}>Over</NavItem>
                     </nav>
                     <div className="flex-1 text-sm text-[#BDC5C3]">© 2025 Sportpsychologie in Antwerpen en Vlaams-Brabant. Alle rechten voorbehouden.</div>
                 </div>
