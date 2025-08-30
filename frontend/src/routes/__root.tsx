@@ -62,7 +62,6 @@ export function RootComponent() {
                 publicKey: "oN_chg0lIthJoXU5v",
             });
         }
-
         initEmailJs();
     }, [])
 
