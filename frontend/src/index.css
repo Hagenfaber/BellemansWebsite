@@ -1,7 +1,6 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-@tailwind variants;
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
 @layer base {
   :root {
     --background: 165, 20%, 92%;
@@ -32,12 +31,16 @@
   }
 }
 @layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-white text-foreground;
-  }
+    html {
+        color-scheme: light dark;
+    }
+
+    * {
+        @apply border-border outline-ring/50;
+    }
+    body {
+        @apply bg-background text-foreground;
+    }
 
   .section-max-width {
     @apply max-w-7xl;
